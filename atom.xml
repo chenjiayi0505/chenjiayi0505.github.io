@@ -1,45 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>cjy&#39;s blog</title>
   
+  <subtitle>my own path in artificial intelligence</subtitle>
+  <link href="http://chenjiayi0505.github.io/atom.xml" rel="self"/>
   
+  <link href="http://chenjiayi0505.github.io/"/>
+  <updated>2025-10-25T06:49:29.891Z</updated>
+  <id>http://chenjiayi0505.github.io/</id>
+  
+  <author>
+    <name>Jiayi Chen</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Above All: Introduction</title>
-    <link href="/2025/10/23/my-first-blog-Introduction/"/>
-    <url>/2025/10/23/my-first-blog-Introduction/</url>
+    <link href="http://chenjiayi0505.github.io/2025/10/23/my-first-blog-Introduction/"/>
+    <id>http://chenjiayi0505.github.io/2025/10/23/my-first-blog-Introduction/</id>
+    <published>2025-10-23T13:20:54.000Z</published>
+    <updated>2025-10-25T06:49:29.891Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Welcome-to-cjy’s-blog"><a href="#Welcome-to-cjy’s-blog" class="headerlink" title="Welcome to cjy’s blog!"></a>Welcome to cjy’s blog!</h1><p>Greetings! This first blog will serve as an introduction, mainly focusing on three topics:<br><strong>Who am I, Why I choose to be a blogger, and What will I post</strong><br>So read this blog first before moving on to other posts</p><h2 id="Section-1-About-me"><a href="#Section-1-About-me" class="headerlink" title="Section 1: About me"></a>Section 1: About me</h2><p>I’m <strong>Jiayi Chen(陈佳宜)</strong>,born in 2007, currently pursuing an undergraduate degree in Artificial Intelligence at Shanghai Jiao Tong University (from 2025 to 2029). With a continuous aspiration to become a scientific researcher, my ideal is to achieve groundbreaking breakthroughs in the field of Artificial Intelligence, thus creating something that can really change people’s life.<br><strong>Feel free to contact me</strong><br>email: <a href="mailto:&#99;&#104;&#x65;&#110;&#x6a;&#105;&#97;&#x79;&#105;&#48;&#x35;&#48;&#53;&#64;&#x73;&#106;&#116;&#117;&#46;&#x65;&#x64;&#x75;&#46;&#99;&#110;">chenjiayi0505@sjtu.edu.cn</a></p><h2 id="Section-2-Why-a-blogger"><a href="#Section-2-Why-a-blogger" class="headerlink" title="Section 2: Why a blogger"></a>Section 2: Why a blogger</h2>]]></content>
     
     
-    <categories>
-      
-      <category>Intro</category>
-      
-    </categories>
+    <summary type="html">about me and my blog</summary>
     
     
-    <tags>
-      
-      <tag>first blog,ai,cs</tag>
-      
-    </tags>
+    
+    <category term="Intro" scheme="http://chenjiayi0505.github.io/categories/Intro/"/>
+    
+    
+    <category term="first blog,ai,cs" scheme="http://chenjiayi0505.github.io/tags/first-blog-ai-cs/"/>
     
   </entry>
   
-  
-  
   <entry>
     <title>Hello World</title>
-    <link href="/2025/10/23/hello-world/"/>
-    <url>/2025/10/23/hello-world/</url>
+    <link href="http://chenjiayi0505.github.io/2025/10/23/hello-world/"/>
+    <id>http://chenjiayi0505.github.io/2025/10/23/hello-world/</id>
+    <published>2025-10-23T12:17:16.890Z</published>
+    <updated>2025-10-23T12:17:16.890Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
     
   </entry>
   
-  
-  
-  
-</search>
+</feed>
