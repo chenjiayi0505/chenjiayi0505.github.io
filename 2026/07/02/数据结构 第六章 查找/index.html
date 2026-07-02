@@ -1,0 +1,835 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiayi Chen">
+  <meta name="keywords" content="artificial intelligence, computer science">
+  
+    <meta name="description" content="1. 静态查找数据集合是固定的 1.1 顺序查找0下标设置为哨兵位，从n找到0，m&#x3D;0表示查找不成功。 123456789101112131415# include &lt;iostream&gt;using namespace std;template&lt;class KEY, class OTHER&gt;struct SET&#123;	KEY key;	OTHER other;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cjy&#39;s blog">
+<meta property="og:url" content="http://chenjiayi0505.github.io/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E6%9F%A5%E6%89%BE/index.html">
+<meta property="og:site_name" content="cjy&#39;s blog">
+<meta property="og:description" content="1. 静态查找数据集合是固定的 1.1 顺序查找0下标设置为哨兵位，从n找到0，m&#x3D;0表示查找不成功。 123456789101112131415# include &lt;iostream&gt;using namespace std;template&lt;class KEY, class OTHER&gt;struct SET&#123;	KEY key;	OTHER other;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-02T13:53:40.456Z">
+<meta property="article:modified_time" content="2026-06-23T05:52:15.622Z">
+<meta property="article:author" content="Jiayi Chen">
+<meta property="article:tag" content="artificial intelligence, computer science">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>cjy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenjiayi0505.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="cjy's blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>cjy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/introduction.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Jiayi Chen
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-02 21:53" pubdate>
+          2026年7月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          116 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-06-23T13:52:15+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-静态查找"><a href="#1-静态查找" class="headerlink" title="1. 静态查找"></a>1. 静态查找</h1><p>数据集合是固定的</p>
+<h2 id="1-1-顺序查找"><a href="#1-1-顺序查找" class="headerlink" title="1.1 顺序查找"></a>1.1 顺序查找</h2><p>0下标设置为哨兵位，从n找到0，m&#x3D;0表示查找不成功。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta"># <span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">SET</span>&#123;<br>	KEY key;<br>	OTHER other;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">seqSearch</span><span class="hljs-params">(SET&lt;KEY,OTHER&gt; data[],<span class="hljs-type">int</span> size,<span class="hljs-type">const</span> KEY&amp; x)</span></span>&#123;<br>	data[<span class="hljs-number">0</span>].key=x;<br>	<span class="hljs-type">int</span> i;<br>	<span class="hljs-keyword">for</span>(i=size;data[i].key!=x;--i);<br>	<span class="hljs-keyword">return</span> i;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>时间复杂度：o(n)</p>
+<h2 id="1-2-折半查找"><a href="#1-2-折半查找" class="headerlink" title="1.2 折半查找"></a>1.2 折半查找</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta"># <span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">SET</span>&#123;<br>	KEY key;<br>	OTHER other;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(SET&lt;KEY,OTHER&gt; data[], <span class="hljs-type">int</span> size, <span class="hljs-type">const</span> KEY &amp;x)</span></span>&#123;<br>	<span class="hljs-type">int</span> low=<span class="hljs-number">1</span>,high=size,mid;<br>	<span class="hljs-keyword">while</span>(low&lt;=high)&#123;<br>		mid=(high+low)/<span class="hljs-number">2</span>;<br>		<span class="hljs-keyword">if</span>(x==data[mid].key) <span class="hljs-keyword">return</span> mid;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x&lt;data[mid].key) high=mid<span class="hljs-number">-1</span>;<br>		<span class="hljs-keyword">else</span> low=mid<span class="hljs-number">+1</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度：$o(\log_{2}n)$</p>
+<h2 id="1-3-插值查找"><a href="#1-3-插值查找" class="headerlink" title="1.3 插值查找"></a>1.3 插值查找</h2><p>计算方法：$mid&#x3D;low+(high-low)((x-a[low]&#x2F;a[high]-a[low]))$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> KEY, <span class="hljs-keyword">class</span> OTHER&gt;</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">interpolationSearch</span><span class="hljs-params">(SET&lt;KEY, OTHER&gt; data[], <span class="hljs-type">int</span> size, <span class="hljs-type">const</span> KEY&amp; x)</span></span>&#123;<br>	<span class="hljs-type">int</span> low=<span class="hljs-number">1</span>,high=size,pos;<br>	<span class="hljs-keyword">while</span>(low&lt;=high &amp;&amp; x&gt;= data[low].key &amp;&amp; x&lt;= data[high].key)&#123;<br>		<span class="hljs-keyword">if</span> (data[high].key == data[low].key) <span class="hljs-keyword">break</span>; <br>		pos=low+(high-low)*((x-data[low].key/data[high].key-data[low],key));<br>		<span class="hljs-keyword">if</span> (data[pos].key==x) <span class="hljs-keyword">return</span> pos;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data[pos].key&lt;x) low=pos<span class="hljs-number">+1</span>;<br>		<span class="hljs-keyword">else</span> high=pos<span class="hljs-number">-1</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>与二分查找的代码区别：</p>
+<ol>
+<li>需要判断x&gt;&#x3D; data[low].key &amp;&amp; x&lt;&#x3D;data[high].key，因为pos计算的公式无法保证这一点，如data[1]&#x3D;100, data[2]&#x3D;101, data[3]&#x3D;102 查找x&#x3D;0，low&#x3D;1，high&#x3D;3，则pos计算值为-99，显然数组越界。</li>
+<li>需要判断 data[high].key &#x3D;&#x3D; data[low].key，否则下一步作为分母的计算无意义。</li>
+</ol>
+<h2 id="1-4-分块查找"><a href="#1-4-分块查找" class="headerlink" title="1.4 分块查找"></a>1.4 分块查找</h2><ul>
+<li>把大的线性表分解成若干块，&#x3D;&#x3D;块中数据可以无序随意存放但是块间必须有序&#x3D;&#x3D;。</li>
+<li>要建立一个索引表，把每块中最大关键字值作为索引表的关键字，从小到大顺序存放在一个辅助数组中。查找时，可以先在索引表中折半查找，确定要找的元素所在的块，然后在块中采用顺序查找，即可找到对应的元素。</li>
+<li>一般适用于数据量很大的情况。</li>
+</ul>
+<h1 id="2-动态查找"><a href="#2-动态查找" class="headerlink" title="2. 动态查找"></a>2. 动态查找</h1><ul>
+<li>数据频繁插入删除，使用链式存储</li>
+</ul>
+<h1 id="3-二叉查找树（掌握思想）"><a href="#3-二叉查找树（掌握思想）" class="headerlink" title="3. 二叉查找树（掌握思想）"></a>3. 二叉查找树（掌握思想）</h1><h2 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义"></a>3.1 定义</h2><ul>
+<li>对二叉树的每一个节点，&#x3D;&#x3D;左子树上所有节点都比其小，右子树都比它大&#x3D;&#x3D;。</li>
+<li>数组序列中没有元素相等</li>
+<li>基本操作：find，insert，remove</li>
+<li>它的中序序列是从大到小排好序的</li>
+</ul>
+<h2 id="3-2-查找"><a href="#3-2-查找" class="headerlink" title="3.2 查找"></a>3.2 查找</h2><ol>
+<li>递归方法：</li>
+</ol>
+<ul>
+<li>根为空，查找失败</li>
+<li>与根相同，成功</li>
+<li>比根小，在左子树找</li>
+<li>比根大，在右子树找</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta"># <span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function">SET&lt;KEY,OTHER&gt; *<span class="hljs-title">BinarySearchTree::find</span> <span class="hljs-params">(KEY &amp;x, BinaryNode *t)</span></span>&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>	<span class="hljs-keyword">if</span>(x==t-&gt;data.key) <span class="hljs-keyword">return</span> &amp;(t-&gt;data);<span class="hljs-comment">//返回对应数据指针</span><br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x&lt;t-&gt;data.key) <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x,t-&gt;left);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x,t-&gt;right);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>非递归方法：</li>
+</ol>
+<ul>
+<li>若当前节点不为空，比较：值相等则查找成功；目标值比当前节点小，则左子为当前节点；目标值比当前节点大，右子为当前节点</li>
+<li>反复至当前节点为空</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>SET&lt;KEY,OTHER&gt; *BinarySearchTree&lt;KEY,OTHER&gt;::<span class="hljs-built_in">find</span>(constKEY&amp;x, BinayNode *t)<span class="hljs-type">const</span>&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>	BinaryNode *p=t;<br>	<span class="hljs-keyword">while</span>(p)&#123;<br>		<span class="hljs-keyword">if</span>(x==p-&gt;data.key) <span class="hljs-keyword">return</span> &amp;(t-&gt;data);<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x&lt;p-&gt;data.key) p=p-&gt;left;<br>		<span class="hljs-keyword">else</span> p=p-&gt;right;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>时间复杂度：时间复杂度即为二叉树高度，但是不是$o(\lg n)$，最坏情况下二叉树退化为单链表，此时为o(n)</p>
+<h2 id="3-3-插入"><a href="#3-3-插入" class="headerlink" title="3.3 插入"></a>3.3 插入</h2><p>递归：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">void</span> BinarySearchTree&lt;KEY,OTHER&gt;:: <span class="hljs-built_in">insert</span>(<span class="hljs-type">const</span> SET&lt;KEY,OTHER&gt;&amp; x,BinaryNode *&amp;t)&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) t=<span class="hljs-keyword">new</span> <span class="hljs-built_in">BinaryNode</span>(x,<span class="hljs-literal">NULL</span>,<span class="hljs-literal">NULL</span>);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x.key&lt;t-&gt;data.key) <span class="hljs-built_in">insert</span>(x,t-&gt;left);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(t-&gt;data.key&lt;x.key) <span class="hljs-built_in">insert</span>(x,t-&gt;right);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>其中，&#x3D;&#x3D;* &amp;t中的&amp;不能被省略&#x3D;&#x3D;。通过对t的修改建立新结点和父结点的关系</p>
+<p>非递归：（非必要不使用）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">void</span> BinarySearchTree&lt;KEY,OTHER&gt;:: <span class="hljs-built_in">insert</span> (<span class="hljs-type">const</span> SET &lt;KEY,OTHER&gt; &amp;x, BinaryNode *&amp;T)&#123;<br>	BinaryNode **p = &amp;t;<br>	<span class="hljs-keyword">while</span>(*p!=<span class="hljs-literal">NULL</span>)&#123;<br>		<span class="hljs-keyword">if</span> (x.key&lt;(*p)-&gt;data.key) p=&amp;(*p)-&gt;left;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((*p)-&gt;data.key&lt;x.key) p=&amp;(*p)-&gt;right;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span>;<br>	&#125;<br>	*p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">BinaryNode</span> (x,<span class="hljs-literal">NULL</span>,<span class="hljs-literal">NULL</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-4-删除"><a href="#3-4-删除" class="headerlink" title="3.4 删除"></a>3.4 删除</h2><p>递归方法：</p>
+<ul>
+<li>待删除节点为叶子：释放待删除节点空间</li>
+<li>待删除结点有唯一孩子：唯一孩子替代待删除结点位置</li>
+<li>待删除节点有两个孩子：在右子树中找最左侧节点，或左子树里找最右侧结点，作为替身</li>
+</ul>
+<p>递归实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> BinarySearchTree &lt;KEY,OTHER&gt;::<span class="hljs-built_in">remove</span>(<span class="hljs-type">const</span> KEY &amp;x, BinaryNode *&amp;t)&#123;<br>	<span class="hljs-keyword">if</span>(t=<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>	<span class="hljs-keyword">if</span>(x&lt;t-&gt;data.key) <span class="hljs-built_in">remove</span>(x,t-&gt;left);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(t-&gt;data.key&lt;x) <span class="hljs-built_in">remove</span>(x,t-&gt;right);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(t-&gt;left!=<span class="hljs-literal">NULL</span> &amp;&amp; t-&gt;right!=<span class="hljs-literal">NULL</span>)&#123;<br>		BinaryNode *tmp=t-&gt;right;<br>		<span class="hljs-keyword">while</span> (tmp-&gt;left!=<span class="hljs-literal">NULL</span>) tmp=tmp-&gt;left;<br>		t-&gt;data = tmp-&gt;data;<br>		<span class="hljs-built_in">remove</span>(t-&gt;data.key, t-&gt;right);<br>	&#125;<br>	<span class="hljs-keyword">else</span> &#123;<br>		BinaryNode *oldNode = t;<br>		t=(t-&gt;left!=<span class="hljs-literal">NULL</span>)? t-&gt;left:t-&gt;right;<br>		<span class="hljs-keyword">delete</span> oldNode;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>非递归实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> BinarySearchTree &lt;KEY,OTHER&gt;::<span class="hljs-built_in">remove</span>(<span class="hljs-type">const</span> KEY &amp;x)&#123;<br>	BinaryNode *current=root;<br>	BinaryNode *parent=<span class="hljs-literal">NULL</span>;<br>	<span class="hljs-keyword">while</span>(current!=<span class="hljs-literal">NULL</span> &amp;&amp; current-&gt;data.key!=x)&#123;<br>		parent=current;<br>		<span class="hljs-keyword">if</span>(x&lt;current-&gt;data.key) current=current-&gt;left;<br>		<span class="hljs-keyword">else</span> current=current-&gt;right;<br>	&#125;<br>	<span class="hljs-keyword">if</span>(current==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>	<br>	<span class="hljs-keyword">if</span>(current-&gt;left!=<span class="hljs-literal">NULL</span> &amp;&amp; current-&gt;right!=<span class="hljs-literal">NULL</span>)&#123;<br>		BinaryNode *tmp=current-&gt;right;<br>		BinaryNode *gp=current;<br>		<span class="hljs-keyword">while</span>(tmp-&gt;left!=<span class="hljs-literal">NULL</span>)&#123;<br>			gp=tmp;<br>			tmp=tmp-&gt;left;<br>		&#125;<br>		current-&gt;data=tmp-&gt;data;<br>		<span class="hljs-keyword">if</span>(gp-&gt;left==tmp) gp-&gt;left=tmp-&gt;right;<br>		<span class="hljs-keyword">else</span> gp-&gt;right=tmp-&gt;right;<br>		<span class="hljs-keyword">delete</span> tmp;<br>	&#125;<br>	<br>	<span class="hljs-keyword">else</span>&#123;<br>		BinaryNode *child=(current-&gt;left!=<span class="hljs-literal">NULL</span>)? current-&gt;left:current-&gt;right;<br>		<span class="hljs-keyword">if</span>(parent==<span class="hljs-literal">NULL</span>) root=child;<br>		<span class="hljs-keyword">else</span>&#123;<br>			<span class="hljs-keyword">if</span>(current==parent-&gt;left) parent-&gt;left=child;<br>			<span class="hljs-keyword">else</span> parent-&gt;right=child;<br>		&#125;<br>		<span class="hljs-keyword">delete</span> current;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="4-顺序统计（略"><a href="#4-顺序统计（略" class="headerlink" title="4. 顺序统计（略)"></a>4. 顺序统计（略)</h1><h1 id="5-平衡二叉查找树（AVL树）"><a href="#5-平衡二叉查找树（AVL树）" class="headerlink" title="5. 平衡二叉查找树（AVL树）"></a>5. 平衡二叉查找树（AVL树）</h1><h2 id="5-1-定义"><a href="#5-1-定义" class="headerlink" title="5.1 定义"></a>5.1 定义</h2><ul>
+<li>平衡因子：左子树高度-右子树高度</li>
+<li>平衡二叉树：所有结点平衡因子只可能是-1,0,1</li>
+<li>平衡二叉树的目标是限制二叉树的高度</li>
+<li>平衡二叉树不一定是数最矮的情况，但是接近最矮</li>
+<li>让查找效率到$o(\lg n)$</li>
+</ul>
+<h2 id="5-2-查找"><a href="#5-2-查找" class="headerlink" title="5.2 查找"></a>5.2 查找</h2><p>完全同普通二叉查找树的查找</p>
+<h2 id="5-3-插入"><a href="#5-3-插入" class="headerlink" title="5.3 插入"></a>5.3 插入</h2><ul>
+<li>插入后父节点平衡因子变为0，则说明本来左右子树不一样高，插入后一样高，再往上的平衡因子不变</li>
+<li>若插入后不平衡，第一个平衡因子超过范围的结点称为冲突节点</li>
+<li>孙子节点分为4种类型：LL、RR、LR、RL</li>
+</ul>
+<p>LL 调整（右旋）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> AvlTree&lt;KEY,OTHER&gt;::<span class="hljs-built_in">LL</span>(AvlNode *&amp;t)&#123;<br>	AvlNode *tl= t-&gt;left;<br>	t-&gt;left=tl-&gt;right;<br>	tl-&gt;right=t;<br>	t-&gt;height=<span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(t-&gt;left),<span class="hljs-built_in">height</span>(t-&gt;right))<span class="hljs-number">+1</span>;<br>	tl-&gt;height=<span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(tl-&gt;left),<span class="hljs-built_in">height</span>(t))<span class="hljs-number">+1</span>;<br>	t=tl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>RR 调整（左旋）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> AvlTree&lt;KEY,OTHER&gt;::<span class="hljs-built_in">RR</span>(AvlNode *&amp;t)&#123;<br>	AvlNode *tl= t-&gt;right;<br>	t-&gt;right=tl-&gt;left;<br>	tl-&gt;left=t;<br>	t-&gt;height=<span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(t-&gt;left),<span class="hljs-built_in">height</span>(t-&gt;right))<span class="hljs-number">+1</span>;<br>	tl-&gt;height=<span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(tl-&gt;right),<span class="hljs-built_in">height</span>(t))<span class="hljs-number">+1</span>;<br>	t=tl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>LR 调整（先对左子树RR旋转，再对当前节点LL旋转）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> AvlTree &lt;KEY,OTHER&gt;::<span class="hljs-built_in">LR</span>(AvlNode *&amp;t)&#123;<br>	<span class="hljs-built_in">RR</span>(t-&gt;left);<br>	<span class="hljs-built_in">LL</span>(t);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>RL 调整（先对右子树LL旋转，再对当前节点RR旋转）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> AvlTree &lt;KEY,OTHER&gt;::<span class="hljs-built_in">LR</span>(AvlNode *&amp;t)&#123;<br>	<span class="hljs-built_in">LL</span>(t-&gt;right);<br>	<span class="hljs-built_in">RR</span>(t);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由此，得insert函数的实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> AvlTree &lt;KEY,OTHER&gt;::<span class="hljs-built_in">insert</span>(<span class="hljs-type">const</span> SET&lt;KEY,OTHER&gt; &amp;x,AvlNode *&amp;t)&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) t=<span class="hljs-keyword">new</span> <span class="hljs-built_in">AvlNode</span>(x,<span class="hljs-literal">NULL</span>,<span class="hljs-literal">NULL</span>);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x.key&lt;t-&gt;data.key)&#123;<br>		<span class="hljs-built_in">insert</span>(x,x-&gt;left);<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">height</span>(t-&gt;left)-<span class="hljs-built_in">height</span>(t-&gt;right)==<span class="hljs-number">2</span>)&#123;<br>			<span class="hljs-keyword">if</span> (x.key&lt;t-&gt;left-&gt;data.key) <span class="hljs-built_in">LL</span>(t);<br>			<span class="hljs-keyword">else</span> <span class="hljs-built_in">LR</span>(t);<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x.key&gt;t-&gt;data.key)&#123;<br>		<span class="hljs-built_in">insert</span>(x,t-&gt;right);<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">height</span>(t-&gt;right)-<span class="hljs-built_in">height</span>(t-&gt;left)==<span class="hljs-number">2</span>)&#123;<br>			<span class="hljs-keyword">if</span>(x.key&gt;t-&gt;right-&gt;data.key) <span class="hljs-built_in">RR</span>(t);<br>			<span class="hljs-keyword">else</span> <span class="hljs-built_in">RL</span>(t);<br>		&#125;<br>	&#125;<br>	t-&gt;height=<span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(t-&gt;left),<span class="hljs-built_in">height</span>(t-&gt;right))<span class="hljs-number">+1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="5-4-删除"><a href="#5-4-删除" class="headerlink" title="5.4 删除"></a>5.4 删除</h2><ul>
+<li>先删除， 删除后，从被删除节点的父节点开始，向上检查平衡性，必要时旋转。</li>
+<li><code>remove</code> 返回 <code>true</code> 表示<strong>不需要再向上调整</strong>，<code>false</code> 表示<strong>本层高度发生变化，需要父节点检查平衡</strong>。</li>
+<li>![[6-AVL树删除.png]]<br>![[6-AVL树删除2.png|697]]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">bool</span> AvlTree&lt;KEY,OTHER&gt;::<span class="hljs-built_in">remove</span>(<span class="hljs-type">const</span> KEY&amp;x, AvlNode *&amp;t)&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>	<span class="hljs-comment">//true表示不需要调整</span><br>	<span class="hljs-keyword">if</span> (x==t-&gt;data.key)&#123;<br>		<span class="hljs-keyword">if</span>(t-&gt;left==<span class="hljs-literal">NULL</span> || t-&gt;right==<span class="hljs-literal">NULL</span>)&#123;<br>			AvlNode *oldNode=t;<br>			t=(t-&gt;left!=<span class="hljs-literal">NULL</span>)? t-&gt;left:t-&gt;right;<br>			<span class="hljs-keyword">delete</span> oldNode;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>			<span class="hljs-comment">// 子树变矮，返回false</span><br>		&#125;<br>		<span class="hljs-keyword">else</span>&#123;<br>			AvlNode *tmp=t-&gt;right;<br>			<span class="hljs-keyword">while</span>(tmp-&gt;left!=<span class="hljs-literal">NULL</span>) tmp=tmp-&gt;left;<br>			t-&gt;data=tmp-&gt;data;<br>			<span class="hljs-keyword">if</span>(<span class="hljs-built_in">remove</span>(tmp-&gt;data.key,t-&gt;right)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">adjust</span>(t,<span class="hljs-number">1</span>);<span class="hljs-comment">//&quot;1&quot;表示删除点在右边；</span><br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">if</span>(x&lt;t-&gt;data.key)&#123;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">remove</span>(x,t-&gt;left)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>		<span class="hljs-keyword">return</span> <span class="hljs-built_in">adjust</span>(t,<span class="hljs-number">0</span>);<br>	&#125;<br>	<span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">remove</span>(x,t-&gt;right)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>		<span class="hljs-keyword">return</span> <span class="hljs-built_in">adjust</span>(t,<span class="hljs-number">1</span>);<br>	&#125;<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">bool</span> AvlTree&lt;KEY,OTHER&gt;::<span class="hljs-built_in">adjust</span>(AvlNode *&amp;t,<span class="hljs-type">int</span> subTree)&#123;<br><span class="hljs-comment">// subtree为0：删除发生在左子树；为1：删除发生在右子树</span><br>	<span class="hljs-keyword">if</span>(subTree)&#123;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">height</span>(t-&gt;left)-<span class="hljs-built_in">height</span>(t-&gt;right)==<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">height</span>(t-&gt;right)==<span class="hljs-built_in">height</span>(t-&gt;left))&#123;<br>		--t-&gt;height;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">height</span>(t-&gt;left-&gt;right)&gt;<span class="hljs-built_in">height</span>(t-&gt;left-&gt;left))&#123;<br>			<span class="hljs-built_in">LR</span>(t);<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>	<br>		<span class="hljs-built_in">LL</span>(t);<br>		<span class="hljs-keyword">return</span> <span class="hljs-built_in">height</span>(t-&gt;right)!=<span class="hljs-built_in">height</span>(t-&gt;left);<br>	&#125;<br>	<br>	<span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">height</span>(t-&gt;right)-<span class="hljs-built_in">height</span>(t-&gt;left)==<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">height</span>(t-&gt;right)==<span class="hljs-built_in">height</span>(t-&gt;left))&#123;<br>			--t-&gt;height;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">height</span>(t-&gt;right-&gt;left)&gt;<span class="hljs-built_in">height</span>(t-&gt;right-&gt;right))&#123;<br>			<span class="hljs-built_in">RL</span>(t);<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>		<br>		<span class="hljs-built_in">RR</span>(t);<br>		<span class="hljs-keyword">return</span> <span class="hljs-built_in">height</span>(t-&gt;right)!=<span class="hljs-built_in">height</span>(t-&gt;left);<br>		<span class="hljs-comment">// 对应5种情况</span><br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="6-红黑树（略）"><a href="#6-红黑树（略）" class="headerlink" title="6. 红黑树（略）"></a>6. 红黑树（略）</h1><h1 id="7-外部查找"><a href="#7-外部查找" class="headerlink" title="7. 外部查找"></a>7. 外部查找</h1><ul>
+<li>实际应用中，数据量很大，存储在外存储器的文件中，数据无法一次性一次载入内存。为加快数据的查找速度，建立检索文件是最普遍的方法。</li>
+<li>索引文件，通常按关键字存储关键字和所属数据在原始文件中地址的对应关系。</li>
+<li>主存储器：即内存，存储正在运行的代码及处理数据</li>
+<li>外存储器：可储存长期保存的信息。常用的有磁盘、磁带、光盘、U盘；存储量大，永久保存；价格低廉，访问速度慢</li>
+<li>考虑处理外存储器上的数据，应考虑如何减少访问次数。</li>
+<li>外存储器中信息以文件为单位，外存储器以数据块为单位与内存交换信息</li>
+</ul>
+<h2 id="7-1-B树（B-树）（掌握思想，理解即可）"><a href="#7-1-B树（B-树）（掌握思想，理解即可）" class="headerlink" title="7.1 B树（B-树）（掌握思想，理解即可）"></a>7.1 B树（B-树）（掌握思想，理解即可）</h2><p>每个节点可以有多个子节点</p>
+<p>&#x3D;&#x3D;定义阶数m，内部结点至少有[m&#x2F;2]（向上取整）个子结点，最多有m个子结点（即每个结点内关键字个数在$[m&#x2F;2]$-1~$m-1$之间）&#x3D;&#x3D;</p>
+<p>B树的插入与删除</p>
+<h2 id="7-2-B-树"><a href="#7-2-B-树" class="headerlink" title="7.2 B+树"></a>7.2 B+树</h2><ul>
+<li>既可以随机查找，也可以顺序访问。</li>
+<li>&#x3D;&#x3D;只有叶子结点中有data，其他层都是索引&#x3D;&#x3D;</li>
+<li>非叶子结点至多保存M-1个键引导查找，键i表示子树i+1中键的最小值</li>
+<li>非叶子结点个数为[M&#x2F;2]~M 之间</li>
+<li>所有叶子结点连接成单链表，可实现原始数据的顺序遍历</li>
+</ul>
+<p>插入：</p>
+<ul>
+<li>叶结点不满：插入叶子</li>
+<li>叶结点装满：分裂叶子，形成两个半满的叶子来插入新的项，更新父结点，若父结点儿子数量已满，继续分裂父亲，最坏情况分裂根，根结点允许只有两个孩子</li>
+</ul>
+<p>删除：</p>
+<ul>
+<li>若叶子元素数正好满足要求的最小值，邻居借一个，若邻居也最小，两个结点合并，向上过滤只根。若过滤过程中根只剩下一个儿子，删除根让儿子作为新根</li>
+</ul>
+<h1 id="8-哈希查找"><a href="#8-哈希查找" class="headerlink" title="8. 哈希查找"></a>8. 哈希查找</h1><h2 id="8-1-基本概念"><a href="#8-1-基本概念" class="headerlink" title="8.1 基本概念"></a>8.1 基本概念</h2><p>哈希法，也叫散列法，直接根据所求节点的关键字值KEY找到这个节点，时间复杂度为o(1)，但是用空间换时间</p>
+<p>哈希函数：每个结点在表中的位置由一个函数H确定，该函数以结点关键字值为参数，计算出关键字对应节点的存储位置。该函数为哈希函数。值域为0-m-1 。哈希函数选择时注意要使计算速度快，散列地址尽可能均匀，冲突机会小。</p>
+<h2 id="8-2-常用哈希函数"><a href="#8-2-常用哈希函数" class="headerlink" title="8.2 常用哈希函数"></a>8.2 常用哈希函数</h2><h3 id="8-2-1-直接地址法"><a href="#8-2-1-直接地址法" class="headerlink" title="8.2.1 直接地址法"></a>8.2.1 直接地址法</h3><p>H(key)&#x3D;a×key+b;</p>
+<h3 id="8-2-2-除留余数法"><a href="#8-2-2-除留余数法" class="headerlink" title="8.2.2 除留余数法"></a>8.2.2 除留余数法</h3><p>H(key)&#x3D;key MOD p+c 其中p选取小于等于m的素数，可以尽可能避免单元的浪费。</p>
+<h3 id="8-2-3-数字分析法"><a href="#8-2-3-数字分析法" class="headerlink" title="8.2.3 数字分析法"></a>8.2.3 数字分析法</h3><p>对关键字集合中的所有关键字，分析每一位上数字分布。取数字分布均匀的位作为地址的组成部分。</p>
+<h3 id="8-2-4-平方取中法"><a href="#8-2-4-平方取中法" class="headerlink" title="8.2.4 平方取中法"></a>8.2.4 平方取中法</h3><p>如果关键字中各位的分布都比较均匀，但关键字的值域比数组规模大，则可以将关键字平方后，取其结果的中间各位作为散列函数值。由于中间各位和每一位数字都有关系，因此均匀分布的可能性较大。</p>
+<h3 id="8-2-5-折叠法"><a href="#8-2-5-折叠法" class="headerlink" title="8.2.5 折叠法"></a>8.2.5 折叠法</h3><p>如果关键字相当长，以至于和散列表的单元总数相比大得多时，可采用此法<br>选取一个长度后，将关键字按此长度分组相加</p>
+<p>259</p>
+<h2 id="8-3-冲突问题（闭散列表）"><a href="#8-3-冲突问题（闭散列表）" class="headerlink" title="8.3 冲突问题（闭散列表）"></a>8.3 冲突问题（闭散列表）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">closeHashTable</span>:<span class="hljs-keyword">public</span> dynamicSearchTable&lt;KEY, OTHER&gt; &#123;<br>    <span class="hljs-keyword">private</span>:<br>        <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span> &#123; <br>            SET &lt;KEY, OTHER&gt;  data;<br>            <span class="hljs-type">int</span>    state;                                  <br>            <span class="hljs-comment">//0 -- empty   1 -- active   2 – deleted</span><br>            <span class="hljs-built_in">node</span>() &#123;state = <span class="hljs-number">0</span>;&#125;<br>       &#125;;<br>       node *array;<br>       <span class="hljs-type">int</span>  size;<br>       <span class="hljs-built_in">int</span> (*key)(<span class="hljs-type">const</span> KEY &amp;x);  <br>       <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">defaultKey</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> &amp;x)</span> </span>&#123;<span class="hljs-keyword">return</span> x;&#125; <br>	<span class="hljs-keyword">public</span>: <br>       <span class="hljs-built_in">closeHashTable</span>(<span class="hljs-type">int</span> length = <span class="hljs-number">101</span>, <span class="hljs-built_in">int</span> (*f)(<span class="hljs-type">const</span> KEY &amp;x) = defaultKey) ;<br>       ~<span class="hljs-built_in">closeHashTable</span>() &#123;<span class="hljs-keyword">delete</span> [] array;&#125;<br>       <span class="hljs-function">SET&lt;KEY, OTHER&gt; *<span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">const</span> KEY &amp;x)</span> <span class="hljs-type">const</span></span>;<br>       <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">const</span> SET&lt;KEY, OTHER&gt; &amp;x)</span></span>;<br>       <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-type">const</span> KEY &amp;x)</span> </span>;<br>&#125;;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">Type</span>&gt;<br>closeHashTable&lt;Type&gt;::<span class="hljs-built_in">closeHashTable</span> (<span class="hljs-type">int</span> length, <span class="hljs-built_in">int</span> (*f)(<span class="hljs-type">const</span> Type  &amp;x) )<br>&#123;<br>	size = length;<br>	array = <span class="hljs-keyword">new</span> node[size];<br>	key = f;<br>&#125; <br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> closeHashTable&lt;KEY, OTHER&gt;::<span class="hljs-built_in">insert</span>(<span class="hljs-type">const</span> SET&lt;KEY, OTHER&gt; &amp;x)<br>&#123;<br>	<span class="hljs-type">int</span> initPos, pos ;	<br>	initPos = pos = <span class="hljs-built_in">key</span>(x.key) % size;<br>	<span class="hljs-keyword">do</span> &#123;  <br>        <span class="hljs-keyword">if</span> (array[pos].state != <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">// 找到空单元</span><br>            array[pos].data = x; <br>            array[pos].state = <span class="hljs-number">1</span>; <br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>		pos = (pos<span class="hljs-number">+1</span>) % size;<br>    &#125; <span class="hljs-keyword">while</span> (pos != initPos);<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> closeHashTable&lt;KEY, OTHER&gt;::<span class="hljs-built_in">remove</span>(<span class="hljs-type">const</span> KEY &amp;x) <br>&#123;	   <br>	<span class="hljs-type">int</span> initPos, pos ; <br>	initPos = pos = <span class="hljs-built_in">key</span>(x) % size;<br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-keyword">if</span> (array[pos].state == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;<br> 	    <span class="hljs-keyword">if</span> (array[pos].state == <span class="hljs-number">1</span> &amp;&amp; array[pos].data.key == x) &#123;  <span class="hljs-comment">// 找到，删除</span><br>		    array[pos].state = <span class="hljs-number">2</span>;<br>		    <span class="hljs-keyword">return</span>;<br>	    &#125;<br>	    pos = (pos<span class="hljs-number">+1</span>) % size;<br>    &#125; <span class="hljs-keyword">while</span> (pos != initPos);<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br>SET&lt;KEY, OTHER&gt; *closeHashTable&lt;KEY, OTHER&gt;::<span class="hljs-built_in">find</span>(<span class="hljs-type">const</span> KEY &amp;x) <span class="hljs-type">const</span><br>&#123; 	    <br>	<span class="hljs-type">int</span> initPos, pos ; <br>	initPos = pos = <span class="hljs-built_in">key</span>(x) % size;<br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-keyword">if</span> (array[pos].state == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;     <span class="hljs-comment">// 没有找到</span><br>	    <span class="hljs-keyword">if</span> (array[pos].state == <span class="hljs-number">1</span> &amp;&amp; array[pos].data.key == x)    <span class="hljs-comment">// 找到</span><br>            <span class="hljs-keyword">return</span> (SET&lt;KEY,OTHER&gt; *)&amp;array[pos];<br>	    pos = (pos<span class="hljs-number">+1</span>) % size;<br>    &#125; <span class="hljs-keyword">while</span> (pos != initPos);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="8-3-1-线性探测法"><a href="#8-3-1-线性探测法" class="headerlink" title="8.3.1 线性探测法"></a>8.3.1 线性探测法</h3><p>当散列 发生冲突时，探测下一个单元，直到发现一个空单元</p>
+<h3 id="8-3-2-二次探测法"><a href="#8-3-2-二次探测法" class="headerlink" title="8.3.2 二次探测法"></a>8.3.2 二次探测法</h3><p>地址序列为k+$1^2$,k+$2^2$,k+$3^2$ ……</p>
+<h3 id="8-3-3-再次散列法"><a href="#8-3-3-再次散列法" class="headerlink" title="8.3.3 再次散列法"></a>8.3.3 再次散列法</h3><p>有两个散列函数hash1和hash2<br>hash1用来计算探测序列的起始地址<br>hash2用来计算下一个探测位置的步长<br>第i次碰撞时，地址为f(i) &#x3D; i×hash2(x)<br>建议采用hash2(x) &#x3D; R - (x mod R)，其中R是小于表长的一个素数<br>设表长为M，插入元素为x，再次散列法的探测序列为： hash1(x), (hash1(x)+hash2(x))mod M, (hash1(x)+2×hash2(x))mod M, …</p>
+<h2 id="8-4-开散列表"><a href="#8-4-开散列表" class="headerlink" title="8.4 开散列表"></a>8.4 开散列表</h2><p>开散列表是将所有散列到同一地址的元素链成一个单链表，于是需要定义一个单链表中的结点类<br>采用不带头结点的单链表<br>散列表保存在一个数组中，数组的每个元素是一个指针，指向对应的单链表的首地址</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">openHashTable</span>:<span class="hljs-keyword">public</span> dynamicSearchTable&lt;KEY, OTHER&gt; &#123;<br>	<span class="hljs-keyword">private</span>:<br>	    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span> &#123;<br>	        SET&lt;KEY, OTHER&gt;  data;<br>		    node    *next; <br>		    <span class="hljs-built_in">node</span> (<span class="hljs-type">const</span> SET&lt;KEY, OTHER&gt; &amp;d, node *n = <span class="hljs-literal">NULL</span>)&#123; data = d;next = n; &#125;<br>		    <span class="hljs-built_in">node</span> () &#123;next = <span class="hljs-literal">NULL</span>;&#125;<br>		&#125;;<br>		node **array;<span class="hljs-comment">//指针数组</span><br>		<span class="hljs-type">int</span>  size;<br>		<span class="hljs-built_in">int</span> (*key)(<span class="hljs-type">const</span> KEY &amp;x);<br>		<span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">defaultKey</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> &amp;x)</span> </span>&#123; <span class="hljs-keyword">return</span> x; &#125;<br>	<span class="hljs-keyword">public</span>: <br>	  	<span class="hljs-built_in">openHashTable</span>(<span class="hljs-type">int</span> length = <span class="hljs-number">101</span>, <span class="hljs-built_in">int</span> (*f)(<span class="hljs-type">const</span> KEY &amp;x) = defaultKey);<br>		~<span class="hljs-built_in">openHashTable</span>() ;<br>		<span class="hljs-function">SET&lt;KEY, OTHER&gt; *<span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">const</span> KEY &amp;x)</span> <span class="hljs-type">const</span></span>;<br>	    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">const</span> SET&lt;KEY, OTHER&gt; &amp;x)</span></span>;<br>	    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-type">const</span> KEY &amp;x)</span> </span>;<br>	&#125;;<br>	<br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br>openHashTable&lt;KEY, OTHER&gt;::<span class="hljs-built_in">openHashTable</span> (<span class="hljs-type">int</span> length,  <span class="hljs-built_in">int</span> (*f)(<span class="hljs-type">const</span> KEY  &amp;x) )<br>&#123;<br>	size = length;<br>	array = <span class="hljs-keyword">new</span> node*[size];<br>	key = f;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; ++i) array[i] = <span class="hljs-literal">NULL</span>;<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br>openHashTable&lt;KEY, OTHER&gt;::~<span class="hljs-built_in">openHashTable</span>()<br>&#123;<br>	node *p, *q;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i&lt; size; ++i) &#123;           <br>	    p = array[i]; <br>	    <span class="hljs-keyword">while</span> (p!=<span class="hljs-literal">NULL</span>) &#123; q= p-&gt;next; <span class="hljs-keyword">delete</span> p; p = q; &#125; ;<br>   &#125;<br>    <span class="hljs-keyword">delete</span> [] array;<br>&#125; <br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> openHashTable&lt;KEY, OTHER&gt;::<span class="hljs-built_in">insert</span>(<span class="hljs-type">const</span> SET&lt;KEY, OTHER&gt; &amp;x)<br>&#123;<br> 	<span class="hljs-type">int</span> pos ;<br>	node *p; <br>    pos = <span class="hljs-built_in">key</span>(x.key) % size;<br>	array[pos] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span>(x, array[pos]);<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br><span class="hljs-type">void</span> openHashTable&lt;KEY, OTHER&gt;::<span class="hljs-built_in">remove</span>(<span class="hljs-type">const</span> KEY &amp;x) <br>&#123;<br> 	<span class="hljs-type">int</span>  pos ;<br> 	node *p, *q;<br>    pos = <span class="hljs-built_in">key</span>(x) % size;<br>  	<span class="hljs-keyword">if</span> (array[pos] == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>    p = array[pos];<br>    <span class="hljs-keyword">if</span> (array[pos]-&gt;data.key == x) &#123;<br>	    array[pos] = p-&gt;next; <span class="hljs-keyword">delete</span> p; <span class="hljs-keyword">return</span>;&#125;<br>    <span class="hljs-keyword">while</span> (p-&gt;next != <span class="hljs-literal">NULL</span> &amp;&amp; !(p-&gt;next-&gt;data.key == x) ) p = p-&gt;next;<br>    <span class="hljs-keyword">if</span> (p-&gt;next != <span class="hljs-literal">NULL</span>) &#123;<br>	      q = p-&gt;next;   p-&gt;next = q-&gt;next;   <span class="hljs-keyword">delete</span> q;    &#125;<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">KEY</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">OTHER</span>&gt;<br>SET&lt;KEY, OTHER&gt; *openHashTable&lt;KEY, OTHER&gt; ::<span class="hljs-built_in">find</span>(<span class="hljs-type">const</span> KEY &amp;x) <span class="hljs-type">const</span><br>&#123;<br>	<span class="hljs-type">int</span> pos ;<br>    node *p;<br>    pos = <span class="hljs-built_in">key</span>(x) % size;<br>    p = array[pos];<br>    <span class="hljs-keyword">while</span> (p != <span class="hljs-literal">NULL</span> &amp;&amp; !(p-&gt;data.key == x) ) p = p-&gt;next;<br>    <span class="hljs-keyword">if</span> (p == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">return</span> (SET&lt;KEY, OTHER&gt; *)p;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. 总结</h1><p>![[6-查找方法总结.png]]</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://chenjiayi0505.github.io/2026/07/02/数据结构 第六章 查找/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Jiayi Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月2日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年6月23日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%8E%92%E5%BA%8F/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E8%A1%A8/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

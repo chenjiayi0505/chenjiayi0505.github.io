@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiayi Chen">
+  <meta name="keywords" content="artificial intelligence, computer science">
+  
+    <meta name="description" content="1. 树定义：对一个节点而言，上层元素为直接前驱而且直接前驱唯一，下层元素为直接后继且直接后继可以有多个  根，子树 一个结点子树的根称为孩子节点，反之为父节点 父结点的父结点是祖父结点 根到某结点路径上所有结点（含根节点）都是祖先结点。反之都是祖先结点的子孙结点 同一父节点的结点互为兄弟结点 树中每个结点拥有孩子结点个数为结点的度，度为0是叶子结点，不为0是中间结点 树的度是每个结点度的最大值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cjy&#39;s blog">
+<meta property="og:url" content="http://chenjiayi0505.github.io/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%A0%91/index.html">
+<meta property="og:site_name" content="cjy&#39;s blog">
+<meta property="og:description" content="1. 树定义：对一个节点而言，上层元素为直接前驱而且直接前驱唯一，下层元素为直接后继且直接后继可以有多个  根，子树 一个结点子树的根称为孩子节点，反之为父节点 父结点的父结点是祖父结点 根到某结点路径上所有结点（含根节点）都是祖先结点。反之都是祖先结点的子孙结点 同一父节点的结点互为兄弟结点 树中每个结点拥有孩子结点个数为结点的度，度为0是叶子结点，不为0是中间结点 树的度是每个结点度的最大值">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-02T13:53:40.468Z">
+<meta property="article:modified_time" content="2026-06-22T15:37:24.248Z">
+<meta property="article:author" content="Jiayi Chen">
+<meta property="article:tag" content="artificial intelligence, computer science">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>cjy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenjiayi0505.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="cjy's blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>cjy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/introduction.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Jiayi Chen
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-02 21:53" pubdate>
+          2026年7月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          88 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-06-22T23:37:24+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-树"><a href="#1-树" class="headerlink" title="1. 树"></a>1. 树</h1><p>定义：对一个节点而言，上层元素为直接前驱而且直接前驱唯一，下层元素为直接后继且直接后继可以有多个</p>
+<ul>
+<li>根，子树</li>
+<li>一个结点子树的根称为孩子节点，反之为父节点</li>
+<li>父结点的父结点是祖父结点</li>
+<li>根到某结点路径上所有结点（含根节点）都是祖先结点。反之都是祖先结点的子孙结点</li>
+<li>同一父节点的结点互为兄弟结点</li>
+<li>树中每个结点拥有孩子结点个数为结点的度，度为0是叶子结点，不为0是中间结点</li>
+<li>树的度是每个结点度的最大值</li>
+<li>根的层次数规定为1，其余结点层次数是父结点+1，所有结点层次数最大值是树的高度</li>
+<li>若每个孩子节点被规定了顺序，称为有序数，否则是无序树</li>
+<li>两棵以上的树是森林</li>
+<li>父结点是孩子结点的直接前驱，孩子节点是父结点的直接后继。直接前驱唯一，直接后继可以有多个</li>
+</ul>
+<h1 id="2-二叉树"><a href="#2-二叉树" class="headerlink" title="2. 二叉树"></a>2. 二叉树</h1><h2 id="2-1-二叉树的定义"><a href="#2-1-二叉树的定义" class="headerlink" title="2.1 二叉树的定义"></a>2.1 二叉树的定义</h2><p>二叉树和树是两种完全不同的结构，二叉树不是特殊的树。</p>
+<ul>
+<li>二叉树允许空树存在，而树中结点个数至少是1，证明二叉树更多作为一种工具存在</li>
+<li>二叉树左右孩子要明确指出是左还是右，即使只有一个孩子也要说明是左子还是右子。有序树中孩子只是排序了，没有左右之分</li>
+<li>若k层二叉树每一层结点数量都达到最高值，则是满二叉树</li>
+<li>若k层二叉树前k-1层是满的，第k层可能缺少一些结点，&#x3D;&#x3D;但是缺少的结点是自右向左的&#x3D;&#x3D;，称为&#x3D;&#x3D;完全二叉树&#x3D;&#x3D;</li>
+</ul>
+<h2 id="2-2-二叉树的性质"><a href="#2-2-二叉树的性质" class="headerlink" title="2.2 二叉树的性质"></a>2.2 二叉树的性质</h2><ol>
+<li>一棵非空二叉树的第i层上最多有$2^{i-1}$ 个结点。</li>
+<li>高度为k的二叉树，最多有$2^k-1$个结点</li>
+<li>对于一棵非空二叉树，叶子结点个数为$n_0$，度数为2的结点个数为$n_2$，有：$n_0&#x3D;n_2+1$。</li>
+<li>具有n个结点的完全二叉树高度为$k&#x3D;[log_2n]+1$。</li>
+<li>若将二叉树按层次遍历编号，i&gt;1时，父节点编号为[i&#x2F;2]；若2i&gt;n，编号为i的结点无左儿子，否则左儿子编号为2i；若2i+1&gt;n，编号为i的结点无右儿子，否则右儿子编号为2i+1</li>
+</ol>
+<h2 id="2-3-二叉树的存储"><a href="#2-3-二叉树的存储" class="headerlink" title="2.3 二叉树的存储"></a>2.3 二叉树的存储</h2><ol>
+<li>数组存储，但是数组退化成一条链时浪费空间</li>
+<li>链表存储：left、right、data</li>
+</ol>
+<h2 id="2-4-二叉树的遍历"><a href="#2-4-二叉树的遍历" class="headerlink" title="2.4 二叉树的遍历"></a>2.4 二叉树的遍历</h2><h3 id="2-4-1-前序遍历"><a href="#2-4-1-前序遍历" class="headerlink" title="2.4.1 前序遍历"></a>2.4.1 前序遍历</h3><p>根左右</p>
+<p>递归算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//递归算法</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pre_order</span><span class="hljs-params">(node *t)</span></span>&#123;<br>	<span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>		cout&lt;&lt;t-&gt;data&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>		<span class="hljs-built_in">pre_order</span>(t-&gt;left);<br>		<span class="hljs-built_in">pre_order</span>(t-&gt;right);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>非递归算法：<br>根进栈。<br>重复操作：出栈并访问，访问右子，如有右子，右子进栈，若有左子，左子进栈。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pre_order</span><span class="hljs-params">(node *t)</span></span>&#123;<br>	stack&lt;node*&gt; s;<br>	s.<span class="hljs-built_in">push</span>(t);<br>	<br>	<span class="hljs-keyword">while</span>(!s.empty)&#123;<br>		node *p=s.<span class="hljs-built_in">top</span>();<br>		s.<span class="hljs-built_in">pop</span>();<br>		cout&lt;&lt;p-&gt;data&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>		<br>		<span class="hljs-keyword">if</span>(p-&gt;right!=<span class="hljs-literal">NULL</span>) s.<span class="hljs-built_in">push</span>(p-&gt;right);<br>		<span class="hljs-keyword">if</span>(p-&gt;left!=<span class="hljs-literal">NULL</span>) s.<span class="hljs-built_in">push</span>(p-&gt;left);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度为o(n)</p>
+<h3 id="2-4-2-中序遍历"><a href="#2-4-2-中序遍历" class="headerlink" title="2.4.2 中序遍历"></a>2.4.2 中序遍历</h3><p>左根右</p>
+<p>递归算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">in_order</span><span class="hljs-params">(node *t)</span></span>&#123;<br>	<span class="hljs-keyword">if</span> (t==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>	<br>	<span class="hljs-built_in">pre_order</span>(t-&gt;left);<br>	cout&lt;&lt;t-&gt;data&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>	<span class="hljs-built_in">pre_order</span>(t-&gt;right);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>非递归算法：<br>引入flag，记录结点是第几次被访问<br>根进栈；初始flag均为0；<br>重复以下操作直至栈空：出栈，若flag&#x3D;0；flag++，入栈，如有左子，左子入栈；若flag&#x3D;1，访问，如有右子，入栈。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">in_order</span><span class="hljs-params">(node *t)</span></span>&#123;<br>	stack&lt;node *&gt; s;<br>	stack&lt;<span class="hljs-type">int</span>&gt; flag;<br>	<span class="hljs-keyword">auto</span> push_node=[&amp;s;&amp;flag](node *p,<span class="hljs-type">int</span> f)&#123;<br>		s.<span class="hljs-built_in">push</span>(p);<br>		flag.<span class="hljs-built_in">push</span>(f);<br>	&#125;<br>	<span class="hljs-built_in">push_node</span> (t,<span class="hljs-number">0</span>);<br>	<br>	<span class="hljs-keyword">while</span>(!s.<span class="hljs-built_in">empty</span>())&#123;<br>		node *p=s.<span class="hljs-built_in">top</span>();<br>		<span class="hljs-type">int</span> f=flag.<span class="hljs-built_in">top</span>();<br>		s.<span class="hljs-built_in">pop</span>();<br>		flag.<span class="hljs-built_in">pop</span>();<br>		<br>		<span class="hljs-keyword">if</span>(f==<span class="hljs-number">0</span>)&#123;<br>			<span class="hljs-built_in">push_node</span> (p,<span class="hljs-number">1</span>);<br>			<span class="hljs-keyword">if</span>(p-&gt;left!=<span class="hljs-literal">NULL</span>) <span class="hljs-built_in">push_node</span> (p-&gt;left,<span class="hljs-number">0</span>);<br>		&#125;<br>		<span class="hljs-keyword">else</span>&#123;<br>			cout&lt;&lt;p-&gt;data&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>			<span class="hljs-keyword">if</span>(p-&gt;right!=<span class="hljs-literal">NULL</span>) <span class="hljs-built_in">push_node</span>(p-&gt;right,<span class="hljs-number">0</span>);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度为o(n)</p>
+<h3 id="2-4-3-后序遍历"><a href="#2-4-3-后序遍历" class="headerlink" title="2.4.3 后序遍历"></a>2.4.3 后序遍历</h3><p>左右根</p>
+<p>递归算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">post_order</span><span class="hljs-params">(node *t)</span></span>&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>	<br>	<span class="hljs-built_in">post_order</span>(t-&gt;left);<br>	<span class="hljs-built_in">post_order</span>(t-&gt;right);<br>	cout&lt;&lt;t-&gt;data&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>非递归算法：<br>若flag&#x3D;0，flag++，该结点再次入栈，若有左子，左子也入栈；若flag&#x3D;1，flag++，该结点再次入栈，若有右子，右子入栈；若flag&#x3D;2，访问</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">post_order</span><span class="hljs-params">(node *t)</span></span>&#123;<br>	stack&lt;node *&gt;s;<br>	stack&lt;<span class="hljs-type">int</span>&gt; flag;<br>	<span class="hljs-keyword">auto</span> push_node=[&amp;s;&amp;flag](node *p,<span class="hljs-type">int</span> f)&#123;<br>		s.<span class="hljs-built_in">push</span>(p);<br>		flag.<span class="hljs-built_in">push</span>(f);<br>	&#125;<br>	<span class="hljs-built_in">push_node</span> (t,<span class="hljs-number">0</span>);<br>	<br>	<span class="hljs-keyword">while</span>(!s.<span class="hljs-built_in">empty</span>())&#123;<br>		node *p=s.<span class="hljs-built_in">top</span>();<br>		<span class="hljs-type">int</span> f=flag.<span class="hljs-built_in">top</span>();<br>		s.<span class="hljs-built_in">pop</span>();<br>		flag.<span class="hljs-built_in">pop</span>();<br>		<br>		<span class="hljs-keyword">if</span>(f==<span class="hljs-number">0</span>)&#123;<br>			push.<span class="hljs-built_in">node</span>(p,<span class="hljs-number">1</span>);<br>			<span class="hljs-keyword">if</span>(p-&gt;left!=<span class="hljs-literal">NULL</span>) <span class="hljs-function">push <span class="hljs-title">node</span><span class="hljs-params">(p-&gt;left,<span class="hljs-number">0</span>)</span></span>;<br>		&#125;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(f==<span class="hljs-number">1</span>)&#123;<br>			<span class="hljs-built_in">push_node</span>(p,<span class="hljs-number">2</span>);<br>			<span class="hljs-keyword">if</span>(p-&gt;right!=<span class="hljs-literal">NULL</span>) <span class="hljs-built_in">push_node</span>(p-&gt;right,<span class="hljs-number">0</span>);<br>		&#125;<br>		<span class="hljs-keyword">else</span> cout&lt;&lt;p-&gt;data&lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度是o(n)</p>
+<h3 id="2-4-4-层次遍历"><a href="#2-4-4-层次遍历" class="headerlink" title="2.4.4 层次遍历"></a>2.4.4 层次遍历</h3><p>根节点进队<br>重复操作直至队空：队首结点出队访问；若有左子，左子进队；若有右子，右子进队</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> BinaryTree <span class="hljs-title">levelOrder</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">if</span>(root==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>	queue&lt;node *&gt;q;<br>	q.<span class="hljs-built_in">push</span>(root);<br>	<span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>())&#123;<br>		<span class="hljs-type">int</span> p=q.<span class="hljs-built_in">front</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		cout&lt;&lt;p-&gt;data&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>		<span class="hljs-keyword">if</span>(p-&gt;left!=<span class="hljs-literal">NULL</span>) q.<span class="hljs-built_in">push</span>(p-&gt;left);<br>		<span class="hljs-keyword">if</span>(p-&gt;right!=<span class="hljs-literal">NULL</span>) q.<span class="hljs-built_in">push</span>(p-&gt;right)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度是o(n)</p>
+<h2 id="2-5-二叉树类及操作实现"><a href="#2-5-二叉树类及操作实现" class="headerlink" title="2.5 二叉树类及操作实现"></a>2.5 二叉树类及操作实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>, T NULL_VALUE&gt;<br>BinaryTree&lt;T,NULL_VALUE&gt;::<span class="hljs-built_in">BinaryTree</span>(<span class="hljs-type">const</span> vector&lt;T&gt; &amp;v)&#123;<br>	<span class="hljs-keyword">if</span>(v.<span class="hljs-built_in">empty</span>())&#123;<br>		root=<span class="hljs-literal">NULL</span>;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br>	<br>	queue&lt;Node*&gt; q;<br>	root=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(v[<span class="hljs-number">0</span>]);<br>	q.<span class="hljs-built_in">push</span>(root);<br>	<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;v.<span class="hljs-built_in">size</span>();i+=<span class="hljs-number">2</span>)&#123;<br>	<span class="hljs-comment">//i+=2跳过下面使用过的两个索引</span><br>		Node&lt;T,NULL_VALUE&gt; *p=q.<span class="hljs-built_in">front</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		<br>		<span class="hljs-keyword">if</span>(v[i]!=NULL_VALUE)&#123;<br>			p-&gt;left=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>&lt;T,NULL_VALUE&gt;(v[i]);<br>			q.<span class="hljs-built_in">push</span>(p-&gt;left);<br>		&#125;		<br>		<br>		<span class="hljs-keyword">if</span>(i<span class="hljs-number">+1</span>&lt;v.<span class="hljs-built_in">size</span>()&amp;&amp;v[i<span class="hljs-number">+1</span>]!=NULL_VALUE)&#123;<br>			p-&gt;right=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>&lt;T,NULL_VALUE&gt;(v[i<span class="hljs-number">+1</span>]);<br>			q.<span class="hljs-built_in">push</span>(p-&gt;right);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>类似层次遍历的思想，出队时两个孩子入队</p>
+<p>size height</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>,T NULL_VALUE&gt;<br><span class="hljs-type">int</span> BinaryTree&lt;T,NULL_VALUE&gt;::_size(Node&lt;T,NULL_VALUE&gt; *t)&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>+_size(t-&gt;left)+_size(t-&gt;right);<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>,T NULL_VALUE&gt;<br><span class="hljs-type">int</span> BinaryTree&lt;T,NULL_VALUE&gt;::_height(Node&lt;t,NULL_VALUE&gt; *t)&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-type">int</span> hl=<span class="hljs-built_in">height</span>(t-&gt;left);<br>	<span class="hljs-type">int</span> hr=<span class="hljs-built_in">height</span>(t-&gt;right);<br>	<span class="hljs-keyword">return</span> (hl&gt;hr)?(hl<span class="hljs-number">+1</span>):(hr<span class="hljs-number">+1</span>);<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>, T NULL_VALUE&gt; <span class="hljs-type">int</span> BinaryTree&lt;T, NULL_VALUE&gt;::<span class="hljs-built_in">size</span>()&#123;<br>	<span class="hljs-keyword">return</span> _size(root);<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>,T NULL_VALUE&gt; <span class="hljs-type">int</span> BinaryTree&lt;T,NULL_VALUE&gt;::<span class="hljs-built_in">height</span>()&#123;<br>	<span class="hljs-keyword">return</span> _height(root);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>删除一棵树</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>,T NULL_VALUE&gt;<br><span class="hljs-type">void</span> BinaryTree&lt;T, NULL_VLAUE&gt;::_del_tree(Node&lt;T,NULL_VALUE&gt; *t)&#123;<br>	<span class="hljs-keyword">if</span>(t==<span class="hljs-literal">NULL</span>) rerturn;<br>	_del_tree(t-&gt;left);<br>	_del_tree(t-&gt;right);<br>	<span class="hljs-keyword">delete</span> t;<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>,T NULL_VALUE&gt; <span class="hljs-type">void</span> BinaryTree &lt;T,NULL_VALUE&gt;::<span class="hljs-built_in">delTree</span>()&#123;<br>	_del_tree(root);<br>	root=<span class="hljs-literal">NULL</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="3-遍历确定二叉树"><a href="#3-遍历确定二叉树" class="headerlink" title="3. 遍历确定二叉树"></a>3. 遍历确定二叉树</h1><ul>
+<li>已知一棵完全二叉树的层次遍历，能唯一确定这棵完全二叉树</li>
+<li>已知一棵满二叉树的前序、后序、中序遍历之一，可以唯一确定一棵满二叉树</li>
+<li>已知一个一般二叉树的前序和中序遍历，可以唯一确定一棵二叉树</li>
+<li>已知一个一般二叉树的后序和中序遍历，可以唯一确定一棵二叉树</li>
+<li>已知一个一般二叉树的前序和后序遍历，不可以唯一确定一棵二叉树</li>
+</ul>
+<p>代码实现：前序+中序<br>思想：由前序数组定出根结点值后，在中序数组找到根结点值所在的位置，由此找到了前序和中序序列中根的左子树下标范围，同样也找到了右子树的下标范围。接下来递归左右子树下标范围即可确定该二叉树</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>, T NULL_VALUE&gt;<br><span class="hljs-type">void</span> BinaryTree&lt;T, NULL_VALUE&gt;::<span class="hljs-built_in">buildTreePreIn</span>(<span class="hljs-type">const</span> std::vector&lt;T&gt; &amp;pre, <span class="hljs-type">const</span> std::vector&lt;T&gt; &amp;in) &#123;<br>  <span class="hljs-comment">// 确认输入序列不为空且长度相同</span><br>	<span class="hljs-keyword">if</span> (pre.<span class="hljs-built_in">empty</span>() || in.<span class="hljs-built_in">empty</span>() || pre.<span class="hljs-built_in">size</span>() != in.<span class="hljs-built_in">size</span>())<br>	    <span class="hljs-keyword">return</span>;<br>  <span class="hljs-comment">// 确认两个序列中元素相同且不出现重复元素</span><br>	<span class="hljs-function">unordered_set&lt;T&gt; <span class="hljs-title">pre_set</span><span class="hljs-params">(pre.begin(), pre.end())</span></span>;<br>    <span class="hljs-function">unordered_set&lt;T&gt; <span class="hljs-title">in_set</span><span class="hljs-params">(in.begin(), in.end())</span></span>;<br>    <span class="hljs-keyword">if</span> (pre_set != in_set || pre_set.<span class="hljs-built_in">size</span>() != pre.<span class="hljs-built_in">size</span>())<br>	    <span class="hljs-keyword">return</span>;<br>  <span class="hljs-comment">// 使用前序和中序序列构造二叉树</span><br>  <span class="hljs-comment">// 定义匿名函数用于递归</span><br>    function&lt;Node&lt;T, NULL_VALUE&gt; *(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>)&gt; build =[&amp;](<span class="hljs-type">int</span> pre_l, <span class="hljs-type">int</span> pre_r, <span class="hljs-type">int</span> in_l, <span class="hljs-type">int</span> in_r) -&gt; Node&lt;T, NULL_VALUE&gt; * &#123;<br>	    <span class="hljs-keyword">if</span> (pre_l &gt; pre_r || in_l &gt; in_r) <span class="hljs-comment">// 递归终止条件</span><br>		    <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>		<span class="hljs-comment">// 使用前序序列第一个元素构造根节点</span><br>	    Node&lt;T, NULL_VALUE&gt; *root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>&lt;T, NULL_VALUE&gt;(pre[pre_l]);<br>	    <span class="hljs-type">int</span> i = in_l; <span class="hljs-comment">// 在中序序列中找到根节点的位置</span><br>	    <span class="hljs-keyword">while</span> (i &lt;= in_r &amp;&amp; in[i] != pre[pre_l])<br>	        ++i;<br>	    <span class="hljs-type">int</span> left_size = i - in_l; <span class="hljs-comment">// 左子树的结点个数</span><br>	    root-&gt;left = <span class="hljs-built_in">build</span>(pre_l + <span class="hljs-number">1</span>, pre_l + left_size, in_l, i - <span class="hljs-number">1</span>); <span class="hljs-comment">// 递归左子</span><br>	    root-&gt;right = <span class="hljs-built_in">build</span>(pre_l + left_size + <span class="hljs-number">1</span>, pre_r, i + <span class="hljs-number">1</span>, in_r); <span class="hljs-comment">// 递归右子</span><br>	    <span class="hljs-keyword">return</span> root;<br>	&#125;;<br>  <span class="hljs-comment">// 删除原有二叉树并构造新的二叉树</span><br>    <span class="hljs-built_in">delTree</span>();<br>    root = <span class="hljs-built_in">build</span>(<span class="hljs-number">0</span>, pre.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, in.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="4-最优二叉树"><a href="#4-最优二叉树" class="headerlink" title="4. 最优二叉树"></a>4. 最优二叉树</h1><ul>
+<li>加权路径长度（WPL）：从根节点到各个叶子结点的路径长度×该叶子权值之和</li>
+<li>最优二叉树：WPL最小，权值越大越靠近根</li>
+<li>哈夫曼算法：1.若U中只有一个结点，操作结束，否则转向第2步。2.在集合中选取两个最小节点x,y 构造新的结点z，权值为x y权值之和，在集合U中删除结点x y并加入新结点z，再转向第一步</li>
+<li>哈夫曼树一定是最优二叉树</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">HuffmanNode</span>&#123;<br>	<span class="hljs-keyword">public</span>:<br>	<span class="hljs-type">int</span> data;<br>	<span class="hljs-type">int</span> weight;<br>	HuffmanNode *left;<br>	HuffmanNode *right;<br>	<span class="hljs-built_in">HuffmanNode</span>(x,y,*a,*b):<span class="hljs-built_in">data</span>(x),<span class="hljs-built_in">weight</span>(y),<span class="hljs-built_in">left</span>(a),<span class="hljs-built_in">right</span>(b)&#123;&#125;;<br>&#125;;<br><br><span class="hljs-function">HuffmanNode <span class="hljs-title">buildHuffmanTree</span><span class="hljs-params">(vector&lt;HuffmanNode *&gt; &amp;nodes)</span></span>&#123;<br>	<span class="hljs-keyword">while</span>(nodes.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>)&#123;<br>		<span class="hljs-keyword">auto</span> [min1,min2]=<span class="hljs-built_in">findMinTwoNodes</span>(nodes);<br>		HuffmanNode *new_node=<span class="hljs-keyword">new</span> <span class="hljs-built_in">HuffmanNode</span>(<span class="hljs-string">&#x27;\0&#x27;</span>,min-&gt;weight+min-&gt;weight,min1,min2);<br>		nodes.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">remove</span>(nodes.<span class="hljs-built_in">begin</span>(),nodes.<span class="hljs-built_in">end</span>(),min1),nodes.<span class="hljs-built_in">end</span>());<br>		nodes.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">remove</span>(nodes.<span class="hljs-built_in">begin</span>(),nodes.<span class="hljs-built_in">end</span>(),min2),nodes.<span class="hljs-built_in">end</span>());<br>		nodes.<span class="hljs-built_in">push_back</span>(new_node);<br>	&#125;<br>	<span class="hljs-keyword">return</span> nodes.<span class="hljs-built_in">empty</span>()? <span class="hljs-literal">NULL</span>:nodes[<span class="hljs-number">0</span>];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">static</span> pair&lt;HuffmanNode *,HuffmanNode *&gt; <span class="hljs-title">findMinTwoNodes</span><span class="hljs-params">(vector&lt;HuffmanNode *&gt; &amp;nodes)</span></span>&#123;<br>	HuffmanNode *min1=<span class="hljs-literal">NULL</span>;<br>	HuffmanNode *min2=<span class="hljs-literal">NULL</span>;<br>	<span class="hljs-type">int</span> min_weight1=INT_MAX;<br>	<span class="hljs-type">int</span> min_weight2=INT_MAX;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> node:nodes)&#123;<br>		<span class="hljs-keyword">if</span>(node-&gt;weight&lt;min_weight1)&#123;<br>			min_weight2=min_weight1;<br>			min2=min1;<br>			min_weight1=node-&gt;weight;<br>			min1=node;<br>		&#125;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(node-&gt;weight&lt;min_weight2)&#123;<br>			min_weight2=node-&gt;weight;<br>			min2=node;<br>		&#125;<br>		<span class="hljs-keyword">return</span> &#123;min1,min2&#125;;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度$o(n^2)$，但学了堆以后，找到权值最小的两个元素的时间复杂度降至o(logn)，时间复杂度降至o(nlogn)</p>
+<p>哈夫曼编码：从根开始遍历。向左则字符串加0，向右加1，直至遍历到叶子结点。<br>&#x3D;&#x3D;可用的编码只能出现在叶子结点上！！！&#x3D;&#x3D;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printHuffmanCodes</span><span class="hljs-params">(HuffmanNode *root,string code)</span></span>&#123;<br>	<span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span>;<br>	<span class="hljs-keyword">if</span>(!root-&gt;left &amp;&amp; !root-&gt;right)&#123;<br>		cout&lt;&lt;root-&gt;data&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;code&lt;&lt;endl;<br>	&#125;<br>	<br>	<span class="hljs-built_in">printHuffmanCodes</span>(root-&gt;left,code+<span class="hljs-string">&#x27;0&#x27;</span>);<br>	<span class="hljs-built_in">printHuffmanCodes</span>(root-&gt;right,code+<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度为o(n)</p>
+<h1 id="5-树和森林"><a href="#5-树和森林" class="headerlink" title="5. 树和森林"></a>5. 树和森林</h1><ul>
+<li><p>非二叉树的孩子兄弟表示法：保存数据，指向最大孩子和最大弟弟的指针。</p>
+</li>
+<li><p>森林的孩子兄弟表示法：每棵树按孩子兄弟法存储后，再将每棵树的根视作兄弟一个一个接在最小哥哥的右分支上</p>
+</li>
+<li><p>二叉树转化为树和森林：反过来操作</p>
+</li>
+<li><p>树的遍历：</p>
+</li>
+</ul>
+<ol>
+<li>前序遍历：放问完根节点再从左至右前序遍历子树</li>
+<li>后序遍历：先从左至右逐个后序遍历所有子树再访问根</li>
+<li>根有多个孩子，故无法定义中序遍历</li>
+</ol>
+<ul>
+<li><p>树的先根遍历就是对应二叉树的先序遍历，&#x3D;&#x3D;后根遍历是对应二叉树的中序遍历&#x3D;&#x3D;</p>
+</li>
+<li><p>森林的遍历：</p>
+</li>
+</ul>
+<ol>
+<li>前序遍历：访问第一棵树的根结点，前序遍历第一棵树中所有根结点的所有子树形成的森林，从左至右同样方式依次访问所有的树</li>
+<li>后序遍历：中序遍历第一棵树中根的子树形成的森林，访问第一棵树的根节点，从左至右依次访问所有树</li>
+</ol>
+<ul>
+<li>森林的先根遍历就是对应二叉树的先序遍历，&#x3D;&#x3D;后根遍历是对应二叉树的中序遍历&#x3D;&#x3D;</li>
+</ul>
+<p>在内存中有一个用二叉树表示的一棵树</p>
+<ol>
+<li>如何求树的高度？二叉树的前序遍历，访问一个结点时，左子的层次为父结点层次加一，右子的层次和父结点的一样的方法来处理</li>
+<li>求森林中树有几棵？可以在二叉树中顺着根，一路右子计数过去，便可解决</li>
+</ol>
+<p>&#x3D;&#x3D;已知一棵树的前序遍历和后序遍历，可以唯一决定一棵树。&#x3D;&#x3D;<br>一棵树的前序遍历序列即其对应孩子兄弟二叉树的前序遍历，一棵树的后序遍历序列即其对应孩子兄弟二叉树的中序遍历，而已知二叉树的前序和中序遍历可以唯一确定这棵二叉树，根据这棵二叉树又能唯一对应一棵树。</p>
+<h1 id="6-优先级队列"><a href="#6-优先级队列" class="headerlink" title="6. 优先级队列"></a>6. 优先级队列</h1><h2 id="6-1-基本的优先级队列（基于线性表）"><a href="#6-1-基本的优先级队列（基于线性表）" class="headerlink" title="6.1 基本的优先级队列（基于线性表）"></a>6.1 基本的优先级队列（基于线性表）</h2><p>结点之间的关系是由结点的优先级决定的，而不是由入队的先后次序决定。优先级高的先出队，优先级低的后出队。</p>
+<p>处理优先级的两种方法：</p>
+<ol>
+<li>入队时，按照优先级在队列中寻找合适的位置，将新入队的元素插入在此位置；出队操作的实现保持不变。入队操作的时间复杂度是O(N)，出队操作的时间复杂度是O(1)</li>
+<li>入队操作的实现保持不变，将新入队的元素放在队列尾；但出队时，在整个队列中查找优先级最高的元素，让它出队。入队操作的时间复杂度是O(1)，出队操作的时间复杂度是O(N)。</li>
+</ol>
+<h2 id="6-2-二叉堆-基于树的优先级队列"><a href="#6-2-二叉堆-基于树的优先级队列" class="headerlink" title="6.2 二叉堆(基于树的优先级队列)"></a>6.2 二叉堆(基于树的优先级队列)</h2><ul>
+<li>最小化堆：父结点小于子结点</li>
+<li>最大化堆：父结点大于子结点</li>
+</ul>
+<p>存储：<br>由于&#x3D;&#x3D;二叉堆是完全二叉树&#x3D;&#x3D;，可以采用顺序存储。二叉堆的有序性可以很容易地通过下标来反映。一般为方便计算，&#x3D;&#x3D;根结点的下标为1&#x3D;&#x3D;。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-keyword">class</span> <span class="hljs-title class_">PriorityQueue</span> &#123;<br><span class="hljs-keyword">private</span>:<br>  std::vector&lt;T&gt; data = std::<span class="hljs-built_in">vector</span>&lt;T&gt;(<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">public</span>:<br>  <span class="hljs-built_in">PriorityQueue</span>() = <span class="hljs-keyword">default</span>;<br>  <span class="hljs-built_in">PriorityQueue</span>(<span class="hljs-type">const</span> std::vector&lt;T&gt; &amp;elements);<br>  <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">const</span> T &amp;value)</span></span>;<br>  <span class="hljs-function">T <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br>  <span class="hljs-function">T <span class="hljs-title">top</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;<br>  <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;<br>  <span class="hljs-function"><span class="hljs-type">size_t</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<p>push操作：<br>在具有最大序号的元素之后插入新的元素或结点，如果新元素放入后，没有违反堆的有序性，那么操作结束。否则，让该节点向父节点移动，直到满足有序性或到达根节点。新节点的向上移动称为向上过滤。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">const</span> T &amp;value)</span> </span>&#123;<br>   data.<span class="hljs-built_in">push_back</span>(value);<br>   <span class="hljs-built_in">heapify_up</span>(data.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">heapify_up</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> </span>&#123;<br>   <span class="hljs-keyword">while</span> (index &gt; <span class="hljs-number">1</span> &amp;&amp; data[index] &lt; data[<span class="hljs-built_in">parent</span>(index)]) &#123;<br>	   std::<span class="hljs-built_in">swap</span>(data[index], data[<span class="hljs-built_in">parent</span>(index)]);<br>       index = <span class="hljs-built_in">parent</span>(index);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度：最坏情况是O(logN)，即完全二叉树的高度，平均情况，过滤会提前结束</p>
+<p>pop操作：<br>当最小元素被删除时，在根上出现了一个空结点，放入最后一项，向下过滤</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">T <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (data.<span class="hljs-built_in">size</span>() &lt;= <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> std::<span class="hljs-built_in">out_of_range</span>(<span class="hljs-string">&quot;PriorityQueue is empty&quot;</span>);<br>    &#125;<br>    T maxValue = data[<span class="hljs-number">1</span>];<br>    data[<span class="hljs-number">1</span>] = data.<span class="hljs-built_in">back</span>();<br>    data.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">if</span> (data.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-built_in">heapify_down</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> maxValue;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">heapify_down</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> </span>&#123;<br>    <span class="hljs-type">int</span> size = data.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">while</span> ((index *<span class="hljs-number">2</span>) &lt; size) &#123;<br>	    <span class="hljs-type">int</span> child = index*<span class="hljs-number">2</span>; <br>	    <span class="hljs-keyword">if</span> (child + <span class="hljs-number">1</span> &lt; size &amp;&amp; data[child + <span class="hljs-number">1</span>] &lt; data[child]) &#123;<br>	        child++;<br>	    &#125;<br>	    <span class="hljs-keyword">if</span> (data[index] &lt;= data[child]) &#123;<br>	        <span class="hljs-keyword">break</span>;<br>	    &#125;<br>	    std::<span class="hljs-built_in">swap</span>(data[index], data[child]);<br>	    index = child;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度o(logn)</p>
+<p>建堆：自下往上调整每一个子堆。从最大的非叶索引开始，每一个向下过滤</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">PriorityQueue</span>(<span class="hljs-type">const</span> std::vector&lt;T&gt; &amp;elements) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span> &amp;element : elements)<br>      data.<span class="hljs-built_in">push_back</span>(element);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = data.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>; i &gt; <span class="hljs-number">0</span>; --i)<br>      <span class="hljs-built_in">heapify_down</span>(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>建堆时间复杂度o(n)</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://chenjiayi0505.github.io/2026/07/02/数据结构 第四章 树/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Jiayi Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月2日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年6月22日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%9B%BE/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

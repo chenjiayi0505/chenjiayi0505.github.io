@@ -1,0 +1,805 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiayi Chen">
+  <meta name="keywords" content="artificial intelligence, computer science">
+  
+    <meta name="description" content="概念 多对多 G &#x3D; (V,E) 表示，V是定点，E是边 有向边：&lt;$v_i$ , $v_j$&gt;， &#x3D;&#x3D;$v_i$ 弧尾  $v_j$弧头&#x3D;&#x3D;   有向图   &lt;&gt;无向边  （）  无向图 邻接关系：若&lt;$v_i$ , $v_j$&gt;，则称$v_i$邻接到$v_j$，或$v_j$和$v_i$邻接 出度：射出的边入度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cjy&#39;s blog">
+<meta property="og:url" content="http://chenjiayi0505.github.io/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%9B%BE/index.html">
+<meta property="og:site_name" content="cjy&#39;s blog">
+<meta property="og:description" content="概念 多对多 G &#x3D; (V,E) 表示，V是定点，E是边 有向边：&lt;$v_i$ , $v_j$&gt;， &#x3D;&#x3D;$v_i$ 弧尾  $v_j$弧头&#x3D;&#x3D;   有向图   &lt;&gt;无向边  （）  无向图 邻接关系：若&lt;$v_i$ , $v_j$&gt;，则称$v_i$邻接到$v_j$，或$v_j$和$v_i$邻接 出度：射出的边入度">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-02T13:53:40.471Z">
+<meta property="article:modified_time" content="2026-06-23T05:47:48.413Z">
+<meta property="article:author" content="Jiayi Chen">
+<meta property="article:tag" content="artificial intelligence, computer science">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>cjy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenjiayi0505.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="cjy's blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>cjy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/introduction.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Jiayi Chen
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-02 21:53" pubdate>
+          2026年7月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          96 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-06-23T13:47:48+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><ul>
+<li>多对多</li>
+<li>G &#x3D; (V,E) 表示，V是定点，E是边</li>
+<li>有向边：&lt;$v_i$ , $v_j$&gt;， &#x3D;&#x3D;$v_i$ 弧尾  $v_j$弧头&#x3D;&#x3D;   有向图   &lt;&gt;<br>无向边  （）  无向图</li>
+<li><strong>邻接关系</strong>：若&lt;$v_i$ , $v_j$&gt;，则称$v_i$邻接到$v_j$，或$v_j$和$v_i$邻接</li>
+<li><strong>出度</strong>：射出的边<br><strong>入度</strong>：射入的边<br>无向图：度</li>
+<li>直接前驱，直接后继，无向图两个邻接的点互为直接前驱和直接后继</li>
+<li>&#x3D;&#x3D;不含自连边&#x3D;&#x3D;</li>
+<li><strong>无向完全图</strong>：$n*(n-1)&#x2F;2$<br><strong>有向完全图</strong>：$n*(n-1)$</li>
+<li>加权有向图，加权无向图：统称为网络</li>
+<li><strong>路径长度</strong>：<br>&#x3D;&#x3D;若无权重，有向边或无向边的条数&#x3D;&#x3D;<br>&#x3D;&#x3D;若有权重：权重之和&#x3D;&#x3D;</li>
+<li><strong>简单路径</strong>：除第一个顶点和最后一个顶点可能相同，&#x3D;&#x3D;其他各顶点不相同&#x3D;&#x3D;<br><strong>简单回路</strong>：简单路径上第一个顶点和最后一个相同</li>
+<li>子图</li>
+<li><strong>连通图</strong>：&#x3D;&#x3D;无向图&#x3D;&#x3D;中任意两个定点对是连通的<br><strong>连通分量</strong>：无向图的&#x3D;&#x3D;极大&#x3D;&#x3D;连通分量</li>
+<li><strong>强连通图</strong>：&#x3D;&#x3D;有向图&#x3D;&#x3D;中任意两顶点对是连通的<br><strong>强连通分量</strong>：有向图的&#x3D;&#x3D;极大&#x3D;&#x3D;连通分量</li>
+<li><strong>连通图的生成树</strong>：&#x3D;&#x3D;极小连通子图&#x3D;&#x3D;，该连通子图包含连通图的所有n个顶点和它的n-1条边，如果去掉一条边，这个子图将不连通，如果增加一条新的边，加上新加的这条边便形成了回路，有回路就不再是树。连通图的生成树不唯一。</li>
+</ul>
+<h1 id="图的存储和操作"><a href="#图的存储和操作" class="headerlink" title="图的存储和操作"></a>图的存储和操作</h1><h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><ul>
+<li>用一维数组存储顶点，n行n列矩阵（二维数组）存储边</li>
+<li>对角线为0：不存在自环</li>
+<li>无向图邻接矩阵按对角线对称</li>
+<li>有向图中，每一行1的个数为出度，每一列1的个数为入度<br>无向图中，每一行或每一列1的个数为度，存储无向图可以只存储上三角或下三角矩阵</li>
+<li>&#x3D;&#x3D;空间消耗大&#x3D;&#x3D;</li>
+<li>带有权值：对应位置数值为权值，&#x3D;&#x3D;对角线元素数值为0&#x3D;&#x3D;，若两点间没有边项链，该处值为$\infty$</li>
+</ul>
+<p>代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 带权值的邻接矩阵 数组实现</span><br><span class="hljs-comment">// 默认点和权值的数据类型为int</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Graph</span>&#123;<br>	<span class="hljs-keyword">public</span>:<br>	<span class="hljs-type">int</span> verts,edges;<br>	<span class="hljs-type">int</span> *verlist;<br>	<span class="hljs-type">int</span> **edgematrix;<br>	<span class="hljs-type">int</span> noedge;<br>	<span class="hljs-type">int</span> maxnum;<br>	<span class="hljs-type">bool</span> directed;<br>	<br>	<span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">Graph</span>(<span class="hljs-type">int</span> e)&#123;<br>		noedge=e;<br>		verts=<span class="hljs-number">0</span>;<br>		edges=<span class="hljs-number">0</span>;<br>		<br>		verlist=<span class="hljs-keyword">new</span> <span class="hljs-type">int</span> [maxnum];<br>		edgematrix=<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>* [maxnum];<br>		<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;maxnum;i++)&#123;<br>			edgematrix[i]=<span class="hljs-keyword">new</span> <span class="hljs-type">int</span> [maxnum];<br>		&#125;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;maxnum;i++)&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;maxnum;j++)&#123;<br>				<span class="hljs-keyword">if</span>(i==j) edgematrix[i][j]=<span class="hljs-number">0</span>;<br>				<span class="hljs-keyword">else</span> edgematrix[i][j]=noedge;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<br>	~<span class="hljs-built_in">Graph</span>()&#123;<br>	<span class="hljs-keyword">delete</span> verlist;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;maxnum;i++)&#123;<br>		<span class="hljs-keyword">delete</span> [] edgematrix[i];<br>	&#125;<br>	<span class="hljs-keyword">delete</span> edgematrix;<br>	&#125;<br>	<br>	<span class="hljs-comment">//判断两个定点之间是否有边</span><br>	<span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">existedge</span><span class="hljs-params">(<span class="hljs-type">int</span> vertex1,<span class="hljs-type">int</span> vertex2)</span></span>&#123;<br>		<span class="hljs-comment">//找到下标</span><br>		<span class="hljs-type">int</span> i,j;<br>		<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>;i&lt;maxnum;i++)&#123;<br>			<span class="hljs-keyword">if</span> (verlist[i]==vertex1) <span class="hljs-keyword">break</span>;<br>		&#125;<br>		<span class="hljs-keyword">for</span> (j=<span class="hljs-number">0</span>;j&lt;maxnum;j++)&#123;<br>			<span class="hljs-keyword">if</span> (verlist[j]==vertex1) <span class="hljs-keyword">break</span>;<br>		&#125;<br>		<span class="hljs-keyword">if</span>(i==maxnum || j==maxnum || i==j) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		<span class="hljs-keyword">if</span>(edgematrix[i][j]==noedge) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove</span> <span class="hljs-params">(<span class="hljs-type">int</span> vertex)</span></span>&#123;<br>		<span class="hljs-type">int</span> i, j, k;<br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; verts; i++) <br>			<span class="hljs-keyword">if</span> (verList[i] == vertex) <span class="hljs-keyword">break</span>; <br>		<span class="hljs-keyword">if</span> (i == verts) <span class="hljs-keyword">return</span>; <br>		<span class="hljs-keyword">for</span> (j = i; j &lt; verts - <span class="hljs-number">1</span>; j++) <br>			verList[j] = verList[j + <span class="hljs-number">1</span>]; <br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; verts; j++) <br>			<span class="hljs-keyword">if</span> ((j != i) &amp;&amp; (edgeMatrix[i][j] != noEdge)) edges--; <br>			<br>		<span class="hljs-keyword">if</span> (directed) &#123;<br>			<span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; verts; k++) &#123;<br>				<span class="hljs-keyword">if</span> ((k != i) &amp;&amp; (edgeMatrix[k][i] != noEdge)) edges--; <br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">for</span> (j = i; j &lt; verts - <span class="hljs-number">1</span>; j++) &#123;<br>			<span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; verts; k++) <br>				edgeMatrix[j][k] = edgeMatrix[j + <span class="hljs-number">1</span>][k];<br>		&#125;<br>		<span class="hljs-keyword">for</span> (j = i; j &lt; verts - <span class="hljs-number">1</span>; j++) &#123;<br>			<span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; verts; k++)<br>				edgeMatrix[k][j] = edgeMatrix[k][j + <span class="hljs-number">1</span>];<br>		&#125;<br>		verts--;<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-2-邻接表"><a href="#2-2-邻接表" class="headerlink" title="2.2 邻接表"></a>2.2 邻接表</h2><ul>
+<li>对于无向图，邻接于同一个顶点的所有边形成一条单链表</li>
+<li>对于有向图，自同一个顶点出发的所有边形成一条单链表</li>
+<li>顶点信息可以用一个一维数组来存储，这个数组称为顶点表，保存边信息的单链表称为边表</li>
+<li>一个图可以由顶点表和边表共同表示，这种方法称为邻接表表示法</li>
+</ul>
+<p>逆邻接表：对于有向图，射向同一个顶点的所有边形成一条单链表</p>
+<h1 id="3-图的遍历"><a href="#3-图的遍历" class="headerlink" title="3. 图的遍历"></a>3. 图的遍历</h1><h2 id="3-1-深度优先遍历-DFS"><a href="#3-1-深度优先遍历-DFS" class="headerlink" title="3.1 深度优先遍历 DFS"></a>3.1 深度优先遍历 DFS</h2><ol>
+<li>选中第一个未被访问过的顶点</li>
+<li>访问、对顶点加已访问标志</li>
+<li>依次从顶点的未被访问过的第一个、第二个、第三个…… 邻接顶点出发，依次进行深度优先搜索。即转向2</li>
+<li>如果还有顶点未被访问过，选中其中一个作为起始顶点，转向2</li>
+<li>如果所有的顶点都被访问到，结束</li>
+</ol>
+<p>递归算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">edgeNode</span> &#123;<br>    <span class="hljs-type">int</span> dest;                    <span class="hljs-comment">// 邻接顶点的编号（在verList中的索引）</span><br>    edgeType weight;             <span class="hljs-comment">// 边的权值（如果是带权图）</span><br>    edgeNode&lt;edgeType&gt; *link;    <span class="hljs-comment">// 指向下一条边的指针</span><br>    <br>    <span class="hljs-built_in">edgeNode</span>() : <span class="hljs-built_in">link</span>(<span class="hljs-literal">NULL</span>) &#123;&#125;<br>    <span class="hljs-built_in">edgeNode</span>(<span class="hljs-type">int</span> d, edgeType w, edgeNode&lt;edgeType&gt; *l = <span class="hljs-literal">NULL</span>) : <span class="hljs-built_in">dest</span>(d), <span class="hljs-built_in">weight</span>(w), <span class="hljs-built_in">link</span>(l) &#123;&#125;<br>&#125;;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">verType</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">vertexNode</span> &#123;<br>    verType data;                  <span class="hljs-comment">// 顶点存储的数据</span><br>    edgeNode&lt;edgeType&gt; *adj;       <span class="hljs-comment">// 指向第一条边的指针</span><br>&#125;;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">verType</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-type">void</span> Graph&lt;verType, edgeType&gt;::<span class="hljs-built_in">DFS</span>(<span class="hljs-type">int</span> start, <span class="hljs-type">bool</span> visited[]) <span class="hljs-type">const</span><br>&#123; <br>	edgeNode&lt;edgeType&gt; *p;<br>  	cout&lt;&lt;verList[start].data&lt;&lt;<span class="hljs-string">&#x27;\t’; 	</span><br><span class="hljs-string">	visited[start] = true; </span><br><span class="hljs-string">	p = verList[start].adj;</span><br><span class="hljs-string">	while (p)&#123; </span><br><span class="hljs-string">		if (!visited[p-&gt;dest]) </span><br><span class="hljs-string">			DFS(p-&gt;dest, visited);</span><br><span class="hljs-string">		p = p-&gt;link;</span><br><span class="hljs-string">	&#125;</span><br><span class="hljs-string">&#125; </span><br><span class="hljs-string"></span><br><span class="hljs-string">template &lt;class verType, class edgeType&gt;</span><br><span class="hljs-string">void Graph&lt;verType, edgeType&gt;::DFS() const &#123; </span><br><span class="hljs-string">	bool *visited; int i;</span><br><span class="hljs-string">	visited = new bool[verts]; </span><br><span class="hljs-string">	if (!visited) throw illegalSize();</span><br><span class="hljs-string">	for (i=0; i&lt;verts; i++) visited[i]=false;</span><br><span class="hljs-string">	for (i=0; i&lt;verts; i++)&#123; </span><br><span class="hljs-string">	    if (!visited[i]) DFS(i, visited);</span><br><span class="hljs-string">		cout&lt;&lt;endl; </span><br><span class="hljs-string">    &#125; </span><br><span class="hljs-string">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>非递归算法：<br>选一个顶点进栈，然后反复进行以下操作：<br>如果栈不空，弹出访问，第一个未被访问的邻接点进栈，第二个未被访问的邻接点进栈，⋯，最后一个未被访问的邻接点进栈。（类似二叉树的前序遍历）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">verType</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-type">void</span> Graph&lt;verType, edgeType&gt;::<span class="hljs-built_in">DFS</span>()<span class="hljs-type">const</span> &#123; <br>	seqStack&lt;<span class="hljs-type">int</span>&gt; s;<br>	edgeNode&lt;edgeType&gt; *p; <br>	<span class="hljs-type">bool</span> *visited; <br>	<span class="hljs-type">int</span> i, start;<br>	<br>	visited = <span class="hljs-keyword">new</span> <span class="hljs-type">bool</span>[verts]; <br>	<span class="hljs-keyword">if</span> (!visited) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">illegalSize</span>();<br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i&lt;verts; i++) &#123;<br>		visited[i]=<span class="hljs-literal">false</span>;<br>    &#125;<br><br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i&lt;verts; i++)&#123; <br>		<span class="hljs-keyword">if</span> (visited[i]) <span class="hljs-keyword">continue</span>;<br>		s.<span class="hljs-built_in">push</span>(i);<br>	  	<span class="hljs-keyword">while</span> (!s.<span class="hljs-built_in">isEmpty</span>()) &#123; <br>			start = s.<span class="hljs-built_in">top</span>();<br>			s.<span class="hljs-built_in">pop</span>();<br>			<span class="hljs-keyword">if</span> (visited[start]) <span class="hljs-keyword">continue</span>;<br>			cout&lt;&lt;verList[start].data&lt;&lt;<span class="hljs-string">&#x27;\t’;</span><br><span class="hljs-string">			visited[start] = true;</span><br><span class="hljs-string">			p = verList[start].adj;</span><br><span class="hljs-string">			while (p) &#123; </span><br><span class="hljs-string">				if (!visited[p-&gt;dest]) s.push(p-&gt;dest);</span><br><span class="hljs-string">				p = p-&gt;link;</span><br><span class="hljs-string">			&#125;</span><br><span class="hljs-string">		&#125;</span><br><span class="hljs-string">		cout&lt;&lt;&#x27;</span>\n’;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+<p>如果图用邻接表存储，栈可以不保存顶点，而是保存边结点地址</p>
+<p>因为每个顶点射出的所有边都在各自用单链表表示的边表中，不需要把访问顶点的所有相邻顶点进栈，只需要将该顶点在边表中的一条其dest顶点未被访问的边结点地址进栈，它出栈时，根据边结点中link字段找下一条其dest顶点未被访问的边，如果有，将它进栈，这样便可保证同一弧尾顶点的所有邻接点可以被一个个挨着查验过去</p>
+<p>如果图用邻接矩阵存储，访问完顶点i，可从第0列开始逐列检查；如果遇到第一个有边且顶点j未被访问过，将描述边位置的两元组(i,j)进栈；它出栈时，让第i行第j列后第一个有边且j+m顶点未被访问过的两元组(i,j+m)进栈即可</p>
+<h2 id="3-2-广度优先遍历-BFS"><a href="#3-2-广度优先遍历-BFS" class="headerlink" title="3.2 广度优先遍历 BFS"></a>3.2 广度优先遍历 BFS</h2><ol>
+<li>选中第一个未被访问的顶点</li>
+<li>访问、对顶点置已访问过的标志</li>
+<li>依次对顶点的未被访问过的第一个、第二个、第三个……第 m 个邻接顶点 W1 、W2、W3…… Wm 进行访问且进行标记</li>
+<li>依次对顶点 W1 、W2、W3…… Wm 转向操作3</li>
+<li>如果还有顶点未被访问，任选其中一个顶点作为起始顶点，转向2</li>
+<li>如果所有的顶点都被访问到，遍历结束<br>（类似二叉树的层次遍历）</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">verType</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-type">void</span> Graph&lt;verType, edgeType&gt;::<span class="hljs-built_in">BFS</span>()<span class="hljs-type">const</span>&#123; <br>	seqQueue&lt;<span class="hljs-type">int</span>&gt; q; <br>	edgeNode&lt;edgeType&gt; *p;<br>	<span class="hljs-type">bool</span> *visited; <br>	<span class="hljs-type">int</span> i, start;<br><br>	visited = <span class="hljs-keyword">new</span> <span class="hljs-type">bool</span>[verts];<br>	<span class="hljs-keyword">if</span> (!visited) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">illegalSize</span>();<br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i&lt;verts; i++) visited[i]=<span class="hljs-literal">false</span>;<br><br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i&lt;verts; i++)&#123; <br>		<span class="hljs-keyword">if</span> (visited[i]) <span class="hljs-keyword">continue</span>;<br>		q.<span class="hljs-built_in">enQueue</span>(i);<br>	  	<span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">isEmpty</span>()) &#123; <br>			start = q.<span class="hljs-built_in">front</span>(); <br>			q.<span class="hljs-built_in">deQueue</span>();<br>			<span class="hljs-keyword">if</span> (visited[start]) <span class="hljs-keyword">continue</span>;<br>			cout&lt;&lt;verList[start].data&lt;&lt;<span class="hljs-string">&#x27;\t’;</span><br><span class="hljs-string">			visited[start] = true;</span><br><span class="hljs-string">			p = verList[start].adj;</span><br><span class="hljs-string">			while (p) &#123;</span><br><span class="hljs-string">				if (!visited[p-&gt;dest]) q.enQueue(p-&gt;dest);</span><br><span class="hljs-string">				p = p-&gt;link;</span><br><span class="hljs-string">			&#125;</span><br><span class="hljs-string">		&#125;</span><br><span class="hljs-string">		cout&lt;&lt;&#x27;</span>\n’;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="4-图的连通性"><a href="#4-图的连通性" class="headerlink" title="4. 图的连通性"></a>4. 图的连通性</h1><h2 id="4-1-无向图的连通性"><a href="#4-1-无向图的连通性" class="headerlink" title="4.1 无向图的连通性"></a>4.1 无向图的连通性</h2><p>在深度优先、广度优先遍历算法中增加一个计数器，记录外循环体中，进入内循环的次数，根据次数可以判断出该图是否连通、如果不连通有几个连通分量、每个连通分量包含哪些顶点</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">verType</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-type">bool</span> Graph&lt;verType, edgeType&gt;::<span class="hljs-built_in">connected</span>()<span class="hljs-type">const</span> &#123; <br>	seqQueue&lt;<span class="hljs-type">int</span>&gt; q; <br>	edgeNode&lt;edgeType&gt; *p;<br>	<span class="hljs-type">bool</span> *visited; <br>	<span class="hljs-type">int</span> i, start, count=<span class="hljs-number">0</span>; <span class="hljs-comment">//count为计数器</span><br> <br>	visited = <span class="hljs-keyword">new</span> <span class="hljs-type">bool</span>[verts];<br>	<span class="hljs-keyword">if</span> (!visited) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">illegalSize</span>();<br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i&lt;verts; i++) visited[i]=<span class="hljs-literal">false</span>;<br><br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i&lt;verts; i++) &#123; <br>		<span class="hljs-keyword">if</span> (visited[i]) <span class="hljs-keyword">continue</span>;<br>		q.<span class="hljs-built_in">enQueue</span>(i); <br>		count++; <br>		<span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">isEmpty</span>())&#123; <br>			start = q.<span class="hljs-built_in">front</span>(); <br>			q.<span class="hljs-built_in">deQueue</span>();<br>			<span class="hljs-keyword">if</span> (visited[start]) <span class="hljs-keyword">continue</span>;<br>			cout&lt;&lt;verList[start].data&lt;&lt;<span class="hljs-string">&#x27;\t’;</span><br><span class="hljs-string">			visited[start] = true;</span><br><span class="hljs-string">	  		p = verList[start].adj;</span><br><span class="hljs-string">			while (p) &#123; </span><br><span class="hljs-string">				if (!visited[p-&gt;dest]) q.enQueue(p-&gt;dest);</span><br><span class="hljs-string">				p = p-&gt;link;</span><br><span class="hljs-string">			&#125;</span><br><span class="hljs-string">		&#125;</span><br><span class="hljs-string">		cout&lt;&lt;&#x27;</span>\n’;<br>	&#125;<br>	<span class="hljs-keyword">if</span> (count==<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-2-有向图的连通性"><a href="#4-2-有向图的连通性" class="headerlink" title="4.2 有向图的连通性"></a>4.2 有向图的连通性</h2><p>当有向图的强连通分量只有一个时，说明它是强连通图；当有向图的强连通分量不止一个时，说明它不是强连通图。对一个强连通分量来说，要求每一对顶点间都有路径可达，比如顶点i和j，不光要从i能到j，还要求从j能到i。</p>
+<p>方法：</p>
+<ol>
+<li>对有向图G进行深度优先遍历，按照遍历中回退顶点的次序给每个顶点进行编号。最先回退的顶点的编号为1，其它顶点的编号按回退先后逐次增大1</li>
+<li>将有向图G的所有有向边反向，构造新的有向图Gr</li>
+<li>根据步骤1对顶点进行的编号，选取未访问过的最大编号顶点</li>
+<li>以该顶点为起始点在有向图Gr上进行深度优先遍历</li>
+<li>如果没有访问到所有的顶点，则从剩余的那些未被访问过的顶点中选取编号最大的顶点，以该顶点为起始点再进行深度优先遍历，如此反复，直至所有的顶点都被访问到</li>
+</ol>
+<h2 id="4-3-欧拉定理"><a href="#4-3-欧拉定理" class="headerlink" title="4.3 欧拉定理"></a>4.3 欧拉定理</h2><ul>
+<li><p>如果图中一条路径经过了每条边一次且仅一次，这条路径称欧拉路径</p>
+</li>
+<li><p>如果一条欧拉路径的起点和终点相同，是一个回路，称欧拉回路</p>
+</li>
+<li><p>具有欧拉回路的图称欧拉图(简称E图)</p>
+</li>
+<li><p>具有欧拉路径但不具有欧拉回路的图称半欧拉图</p>
+</li>
+<li><p>一个无向连通图中，如果度为奇数的顶点超过了2个，则欧拉路径是不存在的</p>
+</li>
+<li><p>一个无向连通图中，如果除了两个顶点的度是奇数而其他顶点的度都是偶数，则从一个度为奇数的顶点出发一定能找到一条经过每条边一次且仅一次的路径回到另外一个度为奇数的顶点</p>
+</li>
+<li><p>一个无向连通图中，如果顶点的度都是偶数，则从任意一个顶点出发都能经过每条边一次且仅一次并回到原来的顶点</p>
+</li>
+</ul>
+<p>求解欧拉回路：</p>
+<ol>
+<li>任选一个顶点v，从该顶点出发开始深度优先搜索，搜索路径上都是由未访问过的边构成，搜索中访问这些边，最后直到回到顶点v且v没有尚未被访问的边，此时便得到了一个回路，此回路为当前结果回路</li>
+<li>在搜索路径上另外找一个尚有未访问边的顶点，继续如上操作，找到另外一个回路，将该回路拼接在当前结果回路上，形成一个大的、新的结果回路</li>
+<li>如果在新的结果回路中，还有中间某结点有尚未访问的边，回到2；如果没有任何中间顶点尚余未访问的边，访问结束，当前结果回路即欧拉回路</li>
+</ol>
+<h1 id="5-最小代价生成树"><a href="#5-最小代价生成树" class="headerlink" title="5. 最小代价生成树"></a>5. 最小代价生成树</h1><h1 id="6-最短路径（代码）"><a href="#6-最短路径（代码）" class="headerlink" title="6. 最短路径（代码）"></a>6. 最短路径（代码）</h1><h2 id="6-1-单源最短路径（-Dijkstra-算法）"><a href="#6-1-单源最短路径（-Dijkstra-算法）" class="headerlink" title="6.1 单源最短路径（ Dijkstra 算法）"></a>6.1 单源最短路径（ Dijkstra 算法）</h2><p>加权有向图中，每个点权值非负，V中的一个顶点作为源点，要求找出从源点出发到达其它各个顶点的最短路径</p>
+<p>每个顶点设置一个距离标签，标识源点到该顶点的最短距离；设置一个顶点集合S，作为已经确定最短路径的顶点集合。<br>初始时，S置为空且将每个顶点到源点的距离标签置为无穷大。<br>将源点放入S中，源点的距离标签设置为0，现在以源点作为当前顶点，循环做以下操作：</p>
+<ol>
+<li>沿当前顶点射出的各条边找到其每个邻接点，如有邻接点A，如果当前顶点的距离标签加上其到达顶点A的边的权值小于顶点A上的距离标签，则用当前顶点的距离标签加上边的权值刷新顶点A上的距离标签。</li>
+<li>下一步，在V-S集合中找到距离标签最小的顶点，将该顶点放入S中，并以它为当前顶点，再次进入循环。当所有顶点都进入S时，循环结束。每个顶点上的距离标签即源点到这个顶点的最短距离。</li>
+</ol>
+<p>特殊情况：<br>假如图中边无权值，将每一条边的权值都视作1，用上述的Dijkstra 算法就可以求出。<br>另外一种方法是从源点出发，使用广度优先遍历的方法遍历顶点，顶点遍历时就是其获得最短距离的机会，其最短距离为遍历时其直接前驱顶点的最短距离加1。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">DijkstraNode</span>&#123;<br>	<span class="hljs-type">int</span> source; <span class="hljs-comment">//当前最短路径上前一顶点</span><br>	<span class="hljs-type">int</span> dist; <span class="hljs-comment">//当前最短路径距离</span><br>	<span class="hljs-type">bool</span> selected; <span class="hljs-comment">//顶点是否已经在S中的标志</span><br>&#125;;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">verType</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-type">void</span> Graph&lt;verType, edgeType&gt;::<span class="hljs-built_in">Dijkstra</span> (verType start) <span class="hljs-type">const</span>&#123;<br>	DijkstraNode&lt;edgeType&gt; *DList;<br>	<span class="hljs-type">int</span> i, j, startInt;<br>	<span class="hljs-type">int</span> cnt; <span class="hljs-comment">//记录集合U中顶点的个数</span><br>	<span class="hljs-type">int</span> min; <span class="hljs-comment">//选出的当前离集合最短的顶点</span><br>	<span class="hljs-type">int</span> dist;<br><br>	<span class="hljs-comment">//查找起始点下标</span><br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i&lt;verts; i++) <br>		<span class="hljs-keyword">if</span> (verList[i] == start) <span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">if</span> (i==verts) <span class="hljs-keyword">return</span>;<br>  <br>	<span class="hljs-comment">//创建空间并初始化DList[i]数组</span><br>	startInt = i; <br>	DList = <span class="hljs-keyword">new</span> DijkstraNode&lt;edgeType&gt; [verts];<br>	<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; verts; i++)&#123;<br>		DList[i].source = <span class="hljs-number">-1</span>;<br>		DList[i].dist = noEdge;<br>		DList[i].selected = <span class="hljs-literal">false</span>;<br>	&#125;<br>	<span class="hljs-comment">// 从下标为startInt的点开始</span><br>	min = startInt;<br>	cnt = <span class="hljs-number">1</span>;<br>	DList[startInt].source = startInt;<br>	DList[startInt].dist = <span class="hljs-number">0</span>;<br>	DList[startInt].selected = <span class="hljs-literal">true</span>;<br>	<br>	<span class="hljs-keyword">while</span> (cnt &lt; verts)&#123; <br>	<span class="hljs-comment">// 根据min顶点发出的边，判断是否修正相邻顶点的最短距离</span><br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; verts; j++)&#123;<br>			<span class="hljs-keyword">if</span> (edgeMatrix[min][j] == <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// 对角线元素</span><br>			<span class="hljs-keyword">if</span> (DList[j].selected) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// 已经加入集合S</span><br>			<span class="hljs-keyword">if</span> (edgeMatrix[min][j] == noEdge) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// 无边</span><br>			<span class="hljs-keyword">if</span> (DList[min].dist + edgeMatrix[min][j] &lt; DList[j].dist)&#123;<br>				DList[j].dist = DList[min].dist + edgeMatrix[min][j];<br>				DList[j].source = min;<br>			&#125;<br>		&#125;<br>		min = <span class="hljs-number">-1</span>;<br>		dist = noEdge;<br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; verts; i++)&#123;<br>			<span class="hljs-keyword">if</span> (DList[i].selected) <span class="hljs-keyword">continue</span>;<br>			<span class="hljs-keyword">if</span> (DList[i].dist &lt; dist)&#123;<br>				min = i;<br>				dist = DList[i].dist;<br>			&#125;<br>		&#125;<br>	<span class="hljs-comment">//此时min一定为某个顶点的下标，如果仍然为-1表示该无相图不连通</span><br>	<span class="hljs-comment">//将顶点min加入集合S</span><br>		cnt++;<br>		DList[min].selected = <span class="hljs-literal">true</span>;<br>	&#125; <br>	<span class="hljs-comment">// 如果图用邻接矩阵来存储，可以看出时间复杂度为O(n^2)。</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-2-顶点对间最短路径（-Floyd-算法）"><a href="#6-2-顶点对间最短路径（-Floyd-算法）" class="headerlink" title="6.2 顶点对间最短路径（ Floyd 算法）"></a>6.2 顶点对间最短路径（ Floyd 算法）</h2><p>对任意两个顶点对&lt;i,j&gt;，在顶点对之间增加另外一个顶点k，观察增加后的路径i-k-j距离是否比原本i到j间的距离更小:如果是，就用新的路径、距离替代原本两个顶点间的路径、距离。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">verType</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">edgeType</span>&gt;<br><span class="hljs-type">void</span> Graph&lt;verType, edgeType&gt;::<span class="hljs-built_in">Floyd</span>() <span class="hljs-type">const</span>&#123;<br>	<span class="hljs-type">int</span> i, j, k;<br>	edgeType **A; <span class="hljs-comment">// 数组A[i][j]记录顶点i到j间的最短距离</span><br>	<span class="hljs-type">int</span> **pre; <span class="hljs-comment">// 数组pre[i][j]记录顶点对i到j的最短路径中的中介顶点，</span><br>	<span class="hljs-comment">// 创建动态数组floyd和path</span><br>	A = <span class="hljs-keyword">new</span> edgeType *[verts];<br>	pre = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span> *[verts];<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; verts; i++)&#123;<br>	A[i] = <span class="hljs-keyword">new</span> edgeType[verts];<br>	pre[i] = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[verts];<br>	&#125;<br>	<span class="hljs-comment">//初始化数组floyd和path</span><br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; verts; i++) <br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; verts; j++)&#123;<br>			A[i][j] = edgeMatrix[i][j];<br>			pre[i][j] = <span class="hljs-number">-1</span>;<br>		&#125;<br>	<span class="hljs-comment">// 迭代计算A数组</span><br>	<span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; verts; k++)&#123;<br>		<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; verts; i++)&#123;<br>			<span class="hljs-keyword">if</span> (i == k) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// 避开加A[i][i]</span><br>			<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; verts; j++)&#123;<br>				<span class="hljs-keyword">if</span> ((j == k) || (j == i)) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// 避开加A[j][j]和A[i][i]</span><br>				<span class="hljs-keyword">if</span> (A[i][j] &gt; (A[i][k] + A[k][j]))&#123;<br>					A[i][j] = A[i][k] + A[k][j];<br>					pre[i][j] = k;<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>求单源最短路径的Dijkstra算法，是一个贪心算法。一旦一个顶点的距离最短，就将之作为最终源点到该顶点的最短距离，所以Dijkstra算法不支持边上带有负权值的情况。<br>Floyd算法可以允许带有负权值的边，但&#x3D;&#x3D;不允许出现带有负权值的边出现在回路且回路中各边的和为负值的情况.&#x3D;&#x3D;</p>
+<h1 id="7-AOV网和AOE网"><a href="#7-AOV网和AOE网" class="headerlink" title="7. AOV网和AOE网"></a>7. AOV网和AOE网</h1><h2 id="7-1-AOV网-拓扑排序"><a href="#7-1-AOV网-拓扑排序" class="headerlink" title="7.1 AOV网 拓扑排序"></a>7.1 AOV网 拓扑排序</h2><p>AOV网将活动赋予顶点之上，顶点间的有向边表示活动发生的先后顺序，表达了活动之间的前后关系。 AOV网的一个典型应用是课程的先修关系<br>在一个集合X中，若关系R有如下特点： 关系R是传递的、自反的、反对称的，就称R是集合X上的偏序关系<br>若集合X上关系R是一个偏序关系，且对于每个a, b∈X，必有aRb或bRa，就称R是集合X上的全序关系<br>实数轴上的实数集合，以及集合上的≤关系，是实数集合上的全序关系<br>对集合X上的一个偏序关系R，通过将集合中原本不满足R关系的所有元素对人为地补充设定拥有R关系，从而将R改变为集合X上的一个全序关系，并按照此全序关系将元素排成一个线性序列<br>在这个线性序列$𝑎_1 、𝑎_2 、…、𝑎_𝑛$中，如果偏序关系中$𝑎_𝑖$ R $𝑎_𝑗$，必有i≤j，这个序列称为拓扑序列，获得拓扑序列的操作称为拓扑排序<br>一个有向无环图（DAG），反映了课程的先修关系。图中顶点代表了课程，课程之间用有向边相连，是一个偏序关系。现在通过拓扑排序安排一张课程先后次序表，使得所有课程排成一个线性序列。这时的先修关系就是这组课程集合上的一个全序关系，这个线性序列就是原本图中表达的关系的一个拓扑序列。</p>
+<p>算法：<br>首先在图中，找到入度为0的顶点，将这些顶点全部入栈，然后反复循环判断栈是否空，非空则执行以下操作：顶点出栈，如果由该顶点射出了m条有向边，射入的这m个邻接点的入度减一（相当于该顶点对其m个邻接顶点的先修约束已经消失），在各邻接点入度减一的过程中，一旦发现哪个邻接点的入度变为0，将它进栈，然后再次回到循环，直到栈空。</p>
+<p>算法的时间代价是$O(n^2)$<br>如果图用邻接表来存储，时间代价为O(n+e)</p>
+<h2 id="7-2-AOE网-关键路径"><a href="#7-2-AOE网-关键路径" class="headerlink" title="7.2 AOE网 关键路径"></a>7.2 AOE网 关键路径</h2><p>AOE网将活动赋予边之上，顶点表达了活动发生后到达的某种状态或事件。某个状态或事件既意味着前面所有的活动结束，也意味着后面的活动可以开始。AOE网的一个典型应用是工程问题。</p>
+<p>求每个顶点事件的最早发生时间，即从起点到达顶点所需要的最短时间<br>求每个顶点事件的最迟发生时间，即从起点到达顶点所能容忍的最长时间<br>当某活动的最早开始时间和最迟开始时间相同时，这些活动便是关键活动</p>
+<p>如果一个工程终点的最早时间已知，这个最早时间就是工程需要的总的最短工期，为了达到这个工期目标，可以设定这个时间就是终点事件的最迟发生时间，然后对余下的顶点倒推回去，可以获得其余顶点事件的最迟发生时间</p>
+<p>算法的时间代价是$O(n^2)$</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://chenjiayi0505.github.io/2026/07/02/数据结构 第五章 图/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Jiayi Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月2日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年6月23日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%A0%91/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
