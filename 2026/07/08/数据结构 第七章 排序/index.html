@@ -26,11 +26,14 @@
 <meta property="og:site_name" content="cjy&#39;s blog">
 <meta property="og:description" content="Notes on internal and external sorting algorithms.">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://chenjiayi0505.github.io/images/7-%E5%86%85%E6%8E%92%E5%BA%8F%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://chenjiayi0505.github.io/images/7-%E7%BD%AE%E6%8D%A2%E9%80%89%E6%8B%A9.png">
 <meta property="article:published_time" content="2026-07-08T12:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-21T06:29:37.979Z">
+<meta property="article:modified_time" content="2026-07-21T06:44:36.917Z">
 <meta property="article:author" content="Jiayi Chen">
 <meta property="article:tag" content="cs,data structure,sorting,algorithm">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://chenjiayi0505.github.io/images/7-%E5%86%85%E6%8E%92%E5%BA%8F%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -293,7 +296,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-07-21T14:29:37+08:00
+                    本文最后更新于 2026-07-21T14:44:36+08:00
                   
                   
 
@@ -363,14 +366,14 @@
 <li>分为最高位优先法（MSD）和最低位优先法（LSD）。最高位优先法的排序分的子序列个数与数字大小有关，比较复杂，一般选用最低位优先法</li>
 <li>若元素最大位数为m，算法的复杂度是o(mn)</li>
 </ul>
-<h2 id="2-10-总结"><a href="#2-10-总结" class="headerlink" title="2.10 总结"></a>2.10 总结</h2><p>![[7-内排序综合对比.png]]</p>
+<h2 id="2-10-总结"><a href="#2-10-总结" class="headerlink" title="2.10 总结"></a>2.10 总结</h2><p><img src="/images/7-%E5%86%85%E6%8E%92%E5%BA%8F%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94.png" srcset="/img/loading.gif" lazyload alt="内排序综合对比"></p>
 <h1 id="3-外排序"><a href="#3-外排序" class="headerlink" title="3. 外排序"></a>3. 外排序</h1><h2 id="3-1-外排序"><a href="#3-1-外排序" class="headerlink" title="3.1 外排序"></a>3.1 外排序</h2><p>外排序：元素个数太多，无法一次性载入内存，需要在内外存间进行数字交换。<br>方法：<br>预处理：N个记录分批读入内存，通过内排序算法形成有序片段<br>归并：把这些有序片段归并为有序文件</p>
 <h2 id="3-2-预处理"><a href="#3-2-预处理" class="headerlink" title="3.2 预处理"></a>3.2 预处理</h2><p>按照内存容量尽可能多地读入数据，在内存进行排序。</p>
 <h2 id="3-3-归并"><a href="#3-3-归并" class="headerlink" title="3.3 归并"></a>3.3 归并</h2><p>最简单：二路归并，需要四条磁带。无需序列放在2条磁带，排序后进入另外两条磁带。</p>
 <p>k路归并需要k+1个磁带即可</p>
 <p>假设有三条磁带和34个已排序片段，初始如何分配两条磁带上的片段数目？<br>若已排序片段是斐波那契数，分解成它的前两项。</p>
 <h2 id="3-4-置换选择"><a href="#3-4-置换选择" class="headerlink" title="3.4 置换选择"></a>3.4 置换选择</h2><p>可以让在只能容纳p个记录的内存中生成平均长度为2p的初始已排序片段</p>
-<p>![[7-置换选择.png]]</p>
+<p><img src="/images/7-%E7%BD%AE%E6%8D%A2%E9%80%89%E6%8B%A9.png" srcset="/img/loading.gif" lazyload alt="置换选择"></p>
 <p>时间消耗为o(m)，但是如果内存中元素按最小化堆存储，时间消耗为$o(log_2m)$</p>
 
                 
