@@ -19,24 +19,24 @@
   <meta name="author" content="Jiayi Chen">
   <meta name="keywords" content="artificial intelligence, computer science">
   
-    <meta name="description" content="1. 线性表 同类型数据结构的有序数列 每个元素仅有一个直接前驱和直接后继（除了表头和表尾）  1.1 线性表数组存储123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263class LinearList&#123;	p">
+    <meta name="description" content="Notes on linear lists, linked lists, and string matching.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cjy&#39;s blog">
-<meta property="og:url" content="http://chenjiayi0505.github.io/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E8%A1%A8/index.html">
+<meta property="og:title" content="Data Structure — Linear Lists">
+<meta property="og:url" content="http://chenjiayi0505.github.io/2026/07/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E8%A1%A8/index.html">
 <meta property="og:site_name" content="cjy&#39;s blog">
-<meta property="og:description" content="1. 线性表 同类型数据结构的有序数列 每个元素仅有一个直接前驱和直接后继（除了表头和表尾）  1.1 线性表数组存储123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263class LinearList&#123;	p">
+<meta property="og:description" content="Notes on linear lists, linked lists, and string matching.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-07-02T13:53:40.453Z">
-<meta property="article:modified_time" content="2026-05-31T05:56:40.763Z">
+<meta property="article:published_time" content="2026-07-03T12:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-21T06:29:12.913Z">
 <meta property="article:author" content="Jiayi Chen">
-<meta property="article:tag" content="artificial intelligence, computer science">
+<meta property="article:tag" content="cs,data structure,linear list">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>cjy&#39;s blog</title>
+  <title>Data Structure — Linear Lists - cjy&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="Data Structure — Linear Lists"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-07-02 21:53" pubdate>
-          2026年7月2日 晚上
+        <time datetime="2026-07-03 20:00" pubdate>
+          2026年7月3日 晚上
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.7k 字
+          7.1k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          57 分钟
+          60 分钟
         
       </span>
     
@@ -288,12 +288,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">Data Structure — Linear Lists</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-05-31T13:56:40+08:00
+                    本文最后更新于 2026-07-21T14:29:12+08:00
                   
                   
 
@@ -303,7 +303,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="1-线性表"><a href="#1-线性表" class="headerlink" title="1. 线性表"></a>1. 线性表</h1><ul>
+                <h1 id="Data-Structure-—-Chapter-2-Linear-Lists"><a href="#Data-Structure-—-Chapter-2-Linear-Lists" class="headerlink" title="Data Structure — Chapter 2: Linear Lists"></a>Data Structure — Chapter 2: Linear Lists</h1><p>This chapter records the core ideas behind linear data structures: sequential lists, linked lists, and strings. The focus is not only on how they are represented, but also on why different operations have different time costs.</p>
+<blockquote>
+<p><strong>Reading guide:</strong> Pay special attention to the trade-off between contiguous storage and linked storage. It appears again throughout later data structures.</p>
+</blockquote>
+<h2 id="1-线性表"><a href="#1-线性表" class="headerlink" title="1. 线性表"></a>1. 线性表</h2><ul>
 <li>同类型数据结构的有序数列</li>
 <li>每个元素仅有一个直接前驱和直接后继（除了表头和表尾）</li>
 </ul>
@@ -364,6 +368,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/data-structure/" class="category-chain-item">data structure</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/cs-data-structure-linear-list/" class="print-no-link">#cs,data structure,linear list</a>
+      
+    </div>
   
 </div>
 
@@ -373,8 +405,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://chenjiayi0505.github.io/2026/07/02/数据结构 第二章 线性表/</div>
+      <div>Data Structure — Linear Lists</div>
+      <div>http://chenjiayi0505.github.io/2026/07/03/数据结构 第二章 线性表/</div>
     </div>
     <div class="license-meta">
       
@@ -386,13 +418,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年7月2日</div>
+          <div>2026年7月3日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年5月31日</div>
+          <div>2026年7月21日</div>
         </div>
       
       
@@ -423,9 +455,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E6%9F%A5%E6%89%BE/" title="">
+                      <a href="/2026/07/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" title="Data Structure — Stacks and Queues">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">Data Structure — Stacks and Queues</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

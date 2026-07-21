@@ -19,24 +19,24 @@
   <meta name="author" content="Jiayi Chen">
   <meta name="keywords" content="artificial intelligence, computer science">
   
-    <meta name="description" content="1. 排序概念 通常待处理的数据不是单一的值，选择一个字段的值作为排序中比较的依据，该字段称为关键字 若待排序数字中有关键字值相同的元素，经过某种排序后相对先后位置在排序先后没有变化，称为稳定排序算法。若不能保证相对先后位置不变，称为不稳定排序 内排序：数据可放入声明的一组变量 外部排序：排序过程中要进行内外存之间的数据交换，只能分批从文件中读入至内存变量 &#x3D;&#x3D;无特殊说明，排序">
+    <meta name="description" content="Notes on internal and external sorting algorithms.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cjy&#39;s blog">
-<meta property="og:url" content="http://chenjiayi0505.github.io/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="Data Structure — Sorting">
+<meta property="og:url" content="http://chenjiayi0505.github.io/2026/07/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="cjy&#39;s blog">
-<meta property="og:description" content="1. 排序概念 通常待处理的数据不是单一的值，选择一个字段的值作为排序中比较的依据，该字段称为关键字 若待排序数字中有关键字值相同的元素，经过某种排序后相对先后位置在排序先后没有变化，称为稳定排序算法。若不能保证相对先后位置不变，称为不稳定排序 内排序：数据可放入声明的一组变量 外部排序：排序过程中要进行内外存之间的数据交换，只能分批从文件中读入至内存变量 &#x3D;&#x3D;无特殊说明，排序">
+<meta property="og:description" content="Notes on internal and external sorting algorithms.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-07-02T13:53:40.460Z">
-<meta property="article:modified_time" content="2026-06-17T12:42:45.473Z">
+<meta property="article:published_time" content="2026-07-08T12:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-21T06:29:37.979Z">
 <meta property="article:author" content="Jiayi Chen">
-<meta property="article:tag" content="artificial intelligence, computer science">
+<meta property="article:tag" content="cs,data structure,sorting,algorithm">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>cjy&#39;s blog</title>
+  <title>Data Structure — Sorting - cjy&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="Data Structure — Sorting"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-07-02 21:53" pubdate>
-          2026年7月2日 晚上
+        <time datetime="2026-07-08 20:00" pubdate>
+          2026年7月8日 晚上
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.5k 字
+          4.8k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          38 分钟
+          41 分钟
         
       </span>
     
@@ -288,12 +288,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">Data Structure — Sorting</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-06-17T20:42:45+08:00
+                    本文最后更新于 2026-07-21T14:29:37+08:00
                   
                   
 
@@ -303,7 +303,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="1-排序概念"><a href="#1-排序概念" class="headerlink" title="1. 排序概念"></a>1. 排序概念</h1><ul>
+                <h1 id="Data-Structure-—-Chapter-7-Sorting"><a href="#Data-Structure-—-Chapter-7-Sorting" class="headerlink" title="Data Structure — Chapter 7: Sorting"></a>Data Structure — Chapter 7: Sorting</h1><p>Sorting is a fundamental operation that makes later searching and processing easier. These notes compare common internal sorting algorithms, their stability, and their time and space trade-offs, followed by an introduction to external sorting.</p>
+<blockquote>
+<p><strong>Reading guide:</strong> When comparing algorithms, consider three questions: Is it stable? How much extra memory does it use? Which input pattern makes it slow?</p>
+</blockquote>
+<h2 id="1-排序概念"><a href="#1-排序概念" class="headerlink" title="1. 排序概念"></a>1. 排序概念</h2><ul>
 <li>通常待处理的数据不是单一的值，选择一个字段的值作为排序中比较的依据，该字段称为关键字</li>
 <li>若待排序数字中有关键字值相同的元素，经过某种排序后相对先后位置在排序先后没有变化，称为稳定排序算法。若不能保证相对先后位置不变，称为不稳定排序</li>
 <li>内排序：数据可放入声明的一组变量</li>
@@ -376,6 +380,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/data-structure/" class="category-chain-item">data structure</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/cs-data-structure-sorting-algorithm/" class="print-no-link">#cs,data structure,sorting,algorithm</a>
+      
+    </div>
   
 </div>
 
@@ -385,8 +417,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://chenjiayi0505.github.io/2026/07/02/数据结构 第七章 排序/</div>
+      <div>Data Structure — Sorting</div>
+      <div>http://chenjiayi0505.github.io/2026/07/08/数据结构 第七章 排序/</div>
     </div>
     <div class="license-meta">
       
@@ -398,13 +430,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年7月2日</div>
+          <div>2026年7月8日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年6月17日</div>
+          <div>2026年7月21日</div>
         </div>
       
       
@@ -435,18 +467,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/07/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E6%9F%A5%E6%89%BE/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2026/07/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E6%9F%A5%E6%89%BE/" title="Data Structure — Searching">
+                        <span class="hidden-mobile">Data Structure — Searching</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
